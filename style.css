@@ -1,38 +1,26 @@
-/* =========================
-   GLOBAL
-========================= */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
+  font-family: Arial;
 }
 
 body {
-  font-family: Arial, sans-serif;
   color: white;
-  line-height: 1.6;
-  transition: all 0.5s ease;
+  transition: 0.5s;
 }
 
-/* =========================
-   THEMES (ANIMATED)
-========================= */
-
+/* ===== BALANCED THEMES ===== */
 body.blue-theme {
-  background: linear-gradient(-45deg, #0d47a1, #000, #0d47a1);
+  background: linear-gradient(-45deg, #1565c0, #000, #0d47a1);
   background-size: 400% 400%;
-  animation: move 8s ease infinite;
+  animation: move 10s ease infinite;
 }
 
 body.red-theme {
-  background: linear-gradient(-45deg, #b71c1c, #000, #b71c1c);
+  background: linear-gradient(-45deg, #c62828, #000, #8e0000);
   background-size: 400% 400%;
-  animation: move 8s ease infinite;
+  animation: move 10s ease infinite;
 }
 
 @keyframes move {
@@ -42,30 +30,20 @@ body.red-theme {
 }
 
 
-/* =========================
-   NAVBAR
-========================= */
-
+/* NAVBAR */
 .navbar {
   position: fixed;
-  top: 0;
   width: 100%;
+  padding: 20px 10%;
   display: flex;
   justify-content: space-between;
-  padding: 20px 10%;
-  background: rgba(0,0,0,0.6);
-  z-index: 1000;
-}
-
-.logo {
-  font-size: 22px;
-  font-weight: bold;
+  background: rgba(0,0,0,0.5);
 }
 
 .nav-links {
   display: flex;
+  gap: 20px;
   list-style: none;
-  gap: 30px;
 }
 
 .nav-links a {
@@ -74,12 +52,9 @@ body.red-theme {
 }
 
 
-/* =========================
-   HERO
-========================= */
-
+/* HERO */
 .hero {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,80 +65,87 @@ body.red-theme {
   font-size: 60px;
 }
 
-.hero h2 {
-  color: #ddd;
-  margin: 10px 0;
+/* typing */
+#typing {
+  margin-top: 10px;
+  font-size: 18px;
+  opacity: 0.8;
 }
 
 
-/* =========================
-   SECTIONS
-========================= */
+/* BUTTONS GLOW */
+button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  background: #000;
+  color: white;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+  transition: 0.3s;
+}
 
+button:hover {
+  box-shadow: 0 0 20px cyan;
+  transform: scale(1.05);
+}
+
+
+/* SECTIONS */
 section {
   padding: 100px 10%;
 }
 
 .section-container {
-  max-width: 1000px;
+  max-width: 900px;
   margin: auto;
 }
 
-section h2 {
-  font-size: 40px;
-  margin-bottom: 20px;
-}
 
-
-/* =========================
-   BUTTON
-========================= */
-
-button {
-  padding: 12px 25px;
-  border: none;
-  border-radius: 8px;
-  background: black;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-
-/* =========================
-   SKILLS
-========================= */
-
+/* SKILLS */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
-  margin-top: 40px;
+  gap: 15px;
+  margin-top: 30px;
 }
 
 .skill-card {
   background: rgba(0,0,0,0.4);
   padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px cyan;
+}
+
+
+/* POPUP */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-box {
+  background: #111;
+  padding: 30px;
   border-radius: 10px;
   text-align: center;
-  border: 1px solid rgba(255,255,255,0.2);
 }
 
-
-/* =========================
-   CONTACT + FOOTER
-========================= */
-
-.contact {
-  text-align: center;
-}
-
-footer {
-  text-align: center;
-  padding: 30px;
-  background: rgba(0,0,0,0.7);
+.hidden {
+  display: none;
 }

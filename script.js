@@ -1,79 +1,78 @@
-/*
-=====================================
-BEGINNER PORTFOLIO WEBSITE
-=====================================
-*/
-
 const portfolioData = {
-
   name: "Shivam Choudhary",
-
   role: "Frontend Learner & Explorer",
-
-  bio: "Learning web development, GitHub workflows, and deployment using Vercel.",
-
+  bio: "Learning modern web development with animations and UI effects.",
   skills: [
-    "Master of Alight Motion",
-    "Master of CapCut",
-    "Master of VN Editor",
-    "AI",
-    "HTML",
-    "Java",
-    "Python",
-    "GitHub",
-    "Web Designing",
-    "CSS"
+    "HTML", "CSS", "JavaScript",
+    "GitHub", "Python", "Java",
+    "CapCut", "Alight Motion"
   ]
-
 };
 
 
-/* =====================================
-   RENDER DATA
-===================================== */
-
+/* ===== TEXT RENDER ===== */
 document.getElementById("name").textContent = portfolioData.name;
 document.getElementById("role").textContent = portfolioData.role;
-document.getElementById("bio").textContent = portfolioData.bio;
 
+
+/* ===== AI TYPING EFFECT ===== */
+const typingText = "Building modern interactive websites...";
+let i = 0;
+
+function typeEffect() {
+  if (i < typingText.length) {
+    document.getElementById("typing").textContent += typingText.charAt(i);
+    i++;
+    setTimeout(typeEffect, 60);
+  }
+}
+typeEffect();
+
+
+/* ===== SKILLS + POPUP ===== */
 const skillsContainer = document.getElementById("skills");
 
 portfolioData.skills.forEach(skill => {
-  const skillCard = document.createElement("div");
-  skillCard.classList.add("skill-card");
-  skillCard.textContent = skill;
-  skillsContainer.appendChild(skillCard);
+  const card = document.createElement("div");
+  card.classList.add("skill-card");
+  card.textContent = skill;
+
+  card.addEventListener("click", () => {
+    showPopup(skill);
+  });
+
+  skillsContainer.appendChild(card);
 });
 
 
-/* =====================================
-   THEME TOGGLE (BLUE ↔ RED)
-===================================== */
+/* POPUP */
+const popup = document.getElementById("popup");
+const popupText = document.getElementById("popupText");
 
-const themeButton = document.getElementById("themeButton");
+function showPopup(skill) {
+  popup.classList.remove("hidden");
+  popupText.textContent = "Skill: " + skill;
+}
+
+function closePopup() {
+  popup.classList.add("hidden");
+}
+
+
+/* ===== THEME TOGGLE ===== */
 const body = document.body;
+const themeButton = document.getElementById("themeButton");
 
-// default theme
 body.classList.add("blue-theme");
 
 themeButton.addEventListener("click", () => {
-
-  if (body.classList.contains("blue-theme")) {
-    body.classList.remove("blue-theme");
-    body.classList.add("red-theme");
-  } else {
-    body.classList.remove("red-theme");
-    body.classList.add("blue-theme");
-  }
-
+  body.classList.toggle("blue-theme");
+  body.classList.toggle("red-theme");
 });
 
 
-/* =====================================
-   CONTACT BUTTON
-===================================== */
-
+/* CONTACT */
 document.getElementById("contactButton")
-  .addEventListener("click", () => {
-    alert("Thanks for visiting my portfolio!");
-  });
+.addEventListener("click", () => {
+  alert("Thanks for visiting my upgraded portfolio 🚀");
+});

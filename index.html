@@ -21,42 +21,51 @@
   </nav>
 
 
+  <!-- HERO -->
   <section class="hero" id="hero">
+
     <div class="hero-content">
 
       <p class="small-text">Hello, I'm</p>
 
       <h1 id="name"></h1>
       <h2 id="role"></h2>
-      <p id="bio"></p>
+
+      <!-- AI typing effect -->
+      <p id="typing"></p>
 
       <button id="themeButton">Change Theme</button>
 
     </div>
+
   </section>
 
 
+  <!-- ABOUT -->
   <section class="about" id="about">
     <div class="section-container">
       <h2>About Me</h2>
-      <p>This is a beginner-friendly portfolio website made using HTML, CSS, and JavaScript only.</p>
+      <p>Beginner-friendly modern portfolio upgraded with animations, themes and interactivity.</p>
     </div>
   </section>
 
 
+  <!-- SKILLS -->
   <section class="skills" id="skills-section">
     <div class="section-container">
-      <h2>Skills</h2>
+      <h2>Skills (Click to view)</h2>
       <div class="skills-grid" id="skills"></div>
     </div>
   </section>
 
 
+  <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="section-container">
       <h2>Contact</h2>
       <p>Email: officialshivamchoudhary2009@gmail.com</p>
       <p>Phone: 9430932904</p>
+
       <button id="contactButton">Contact me</button>
     </div>
   </section>
@@ -65,6 +74,15 @@
   <footer>
     <p>Built with HTML, CSS & JavaScript</p>
   </footer>
+
+
+  <!-- POPUP -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-box">
+      <h3 id="popupText"></h3>
+      <button onclick="closePopup()">Close</button>
+    </div>
+  </div>
 
 
   <script src="script.js"></script>
