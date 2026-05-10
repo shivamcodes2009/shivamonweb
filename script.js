@@ -38,6 +38,7 @@ const portfolioData = {
     "CSS",
     "JavaScript",
     "GitHub",
+    "Capcut",
     "Vercel"
   ]
 
