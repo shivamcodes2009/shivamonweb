@@ -1,78 +1,91 @@
 const portfolioData = {
   name: "Shivam Choudhary",
-  role: "Frontend Learner & Explorer",
-  bio: "Learning modern web development with animations and UI effects.",
-  skills: [
-    "HTML", "CSS", "JavaScript",
-    "GitHub", "Python", "Java",
-    "CapCut", "Alight Motion"
-  ]
+  role: "Frontend Developer",
+  skills: ["HTML", "CSS", "JS", "GitHub", "Python", "AI Tools"]
 };
 
 
-/* ===== TEXT RENDER ===== */
+/* TEXT */
 document.getElementById("name").textContent = portfolioData.name;
 document.getElementById("role").textContent = portfolioData.role;
 
 
-/* ===== AI TYPING EFFECT ===== */
-const typingText = "Building modern interactive websites...";
+/* TYPING */
+const text = "Building modern websites with AI features...";
 let i = 0;
 
-function typeEffect() {
-  if (i < typingText.length) {
-    document.getElementById("typing").textContent += typingText.charAt(i);
+function type() {
+  if (i < text.length) {
+    document.getElementById("typing").textContent += text[i];
     i++;
-    setTimeout(typeEffect, 60);
+    setTimeout(type, 50);
   }
 }
-typeEffect();
+type();
 
 
-/* ===== SKILLS + POPUP ===== */
+/* SKILLS + POPUP */
 const skillsContainer = document.getElementById("skills");
-
-portfolioData.skills.forEach(skill => {
-  const card = document.createElement("div");
-  card.classList.add("skill-card");
-  card.textContent = skill;
-
-  card.addEventListener("click", () => {
-    showPopup(skill);
-  });
-
-  skillsContainer.appendChild(card);
-});
-
-
-/* POPUP */
 const popup = document.getElementById("popup");
 const popupText = document.getElementById("popupText");
 
-function showPopup(skill) {
-  popup.classList.remove("hidden");
-  popupText.textContent = "Skill: " + skill;
-}
+portfolioData.skills.forEach(skill => {
+  const div = document.createElement("div");
+  div.classList.add("skill-card");
+  div.textContent = skill;
+
+  div.onclick = () => {
+    popup.classList.remove("hidden");
+    popupText.textContent = "Skill: " + skill;
+  };
+
+  skillsContainer.appendChild(div);
+});
 
 function closePopup() {
   popup.classList.add("hidden");
 }
 
 
-/* ===== THEME TOGGLE ===== */
+/* THEME */
 const body = document.body;
-const themeButton = document.getElementById("themeButton");
-
 body.classList.add("blue-theme");
 
-themeButton.addEventListener("click", () => {
+document.getElementById("themeButton").onclick = () => {
   body.classList.toggle("blue-theme");
   body.classList.toggle("red-theme");
-});
+};
 
 
-/* CONTACT */
-document.getElementById("contactButton")
-.addEventListener("click", () => {
-  alert("Thanks for visiting my upgraded portfolio 🚀");
-});
+/* HIRE ME */
+function hireMe() {
+  alert("🚀 Thanks! I will contact you soon for collaboration.");
+}
+
+
+/* CHATBOT (SIMPLE AI LOGIC) */
+function sendMessage() {
+  const input = document.getElementById("userInput");
+  const chatBox = document.getElementById("chatBox");
+
+  const userText = input.value;
+  if (!userText) return;
+
+  chatBox.innerHTML += `<p><b>You:</b> ${userText}</p>`;
+
+  let reply = "I am still learning 🤖";
+
+  if (userText.toLowerCase().includes("hello")) {
+    reply = "Hello! कैसे हो?";
+  }
+  else if (userText.toLowerCase().includes("skills")) {
+    reply = "I know HTML, CSS, JavaScript, Python";
+  }
+  else if (userText.toLowerCase().includes("hire")) {
+    reply = "Yes! I am available for freelance work 💼";
+  }
+
+  chatBox.innerHTML += `<p><b>Bot:</b> ${reply}</p>`;
+
+  input.value = "";
+}

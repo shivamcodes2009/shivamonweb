@@ -3,19 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modern Portfolio</title>
+  <title>Modern Portfolio Pro</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+  <!-- NAVBAR -->
   <nav class="navbar">
-    <div class="logo">Portfolio</div>
+    <div class="logo">Portfolio Pro</div>
 
     <ul class="nav-links">
       <li><a href="#hero">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#skills-section">Skills</a></li>
+      <li><a href="#hire">Hire Me</a></li>
+      <li><a href="#chatbot">AI Chat</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -31,7 +34,6 @@
       <h1 id="name"></h1>
       <h2 id="role"></h2>
 
-      <!-- AI typing effect -->
       <p id="typing"></p>
 
       <button id="themeButton">Change Theme</button>
@@ -45,7 +47,7 @@
   <section class="about" id="about">
     <div class="section-container">
       <h2>About Me</h2>
-      <p>Beginner-friendly modern portfolio upgraded with animations, themes and interactivity.</p>
+      <p>Modern portfolio with AI chatbot, animations, and hire-me system.</p>
     </div>
   </section>
 
@@ -53,8 +55,34 @@
   <!-- SKILLS -->
   <section class="skills" id="skills-section">
     <div class="section-container">
-      <h2>Skills (Click to view)</h2>
+      <h2>Skills (Click)</h2>
       <div class="skills-grid" id="skills"></div>
+    </div>
+  </section>
+
+
+  <!-- HIRE ME SECTION -->
+  <section class="hire" id="hire">
+    <div class="section-container hire-box">
+      <h2>💼 Hire Me</h2>
+      <p>I am available for freelance projects, frontend development, and UI design work.</p>
+
+      <button onclick="hireMe()">Hire Me Now</button>
+    </div>
+  </section>
+
+
+  <!-- AI CHATBOT -->
+  <section class="chatbot" id="chatbot">
+    <div class="section-container">
+
+      <h2>🧠 AI Chat Assistant</h2>
+
+      <div class="chat-box" id="chatBox"></div>
+
+      <input id="userInput" placeholder="Ask something..." />
+      <button onclick="sendMessage()">Send</button>
+
     </div>
   </section>
 
@@ -66,13 +94,14 @@
       <p>Email: officialshivamchoudhary2009@gmail.com</p>
       <p>Phone: 9430932904</p>
 
-      <button id="contactButton">Contact me</button>
+      <button id="contactButton">Contact Me</button>
     </div>
   </section>
 
 
+  <!-- FOOTER -->
   <footer>
-    <p>Built with HTML, CSS & JavaScript</p>
+    <p>Built with ❤️ HTML, CSS & JavaScript</p>
   </footer>
 
 
