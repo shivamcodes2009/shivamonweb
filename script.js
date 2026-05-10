@@ -34,12 +34,16 @@ const portfolioData = {
   bio: "Learning web development, GitHub workflows, and deployment using Vercel.",
 
   skills: [
+    "Master of Alight Motion",
+    "Master of CapCut",
+    "Master of VN Editor",
+    "AI",
     "HTML",
-    "CSS",
-    "JavaScript",
+    "Java",
+    "Python",
     "GitHub",
-    "Capcut",
-    "Vercel"
+    "Web Designing",
+    "CSS"
   ]
 
 };
