@@ -1,120 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Modern Portfolio Pro</title>
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
+<body class="blue-theme">
 
-<body>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">Portfolio Pro</div>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#hire">Hire</a></li>
+    <li><a href="#chat">AI Chat</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="logo">Portfolio Pro</div>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <img src="https://i.imgur.com/6VBx3io.png" class="profile" />
 
-    <ul class="nav-links">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills-section">Skills</a></li>
-      <li><a href="#hire">Hire Me</a></li>
-      <li><a href="#chatbot">AI Chat</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+    <p>Hello, I'm</p>
+    <h1 class="gradient-text">Shivam Choudhary</h1>
+    <h2 id="role">Frontend Developer</h2>
+    <p id="typing"></p>
 
-
-  <!-- HERO -->
-  <section class="hero" id="hero">
-
-    <div class="hero-content">
-
-      <p class="small-text">Hello, I'm</p>
-
-      <h1 id="name"></h1>
-      <h2 id="role"></h2>
-
-      <p id="typing"></p>
-
-      <button id="themeButton">Change Theme</button>
-
+    <div class="cta">
+      <button>Hire Me</button>
+      <button>Download CV</button>
     </div>
 
-  </section>
-
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="section-container">
-      <h2>About Me</h2>
-      <p>Modern portfolio with AI chatbot, animations, and hire-me system.</p>
-    </div>
-  </section>
-
-
-  <!-- SKILLS -->
-  <section class="skills" id="skills-section">
-    <div class="section-container">
-      <h2>Skills (Click)</h2>
-      <div class="skills-grid" id="skills"></div>
-    </div>
-  </section>
-
-
-  <!-- HIRE ME SECTION -->
-  <section class="hire" id="hire">
-    <div class="section-container hire-box">
-      <h2>💼 Hire Me</h2>
-      <p>I am available for freelance projects, frontend development, and UI design work.</p>
-
-      <button onclick="hireMe()">Hire Me Now</button>
-    </div>
-  </section>
-
-
-  <!-- AI CHATBOT -->
-  <section class="chatbot" id="chatbot">
-    <div class="section-container">
-
-      <h2>🧠 AI Chat Assistant</h2>
-
-      <div class="chat-box" id="chatBox"></div>
-
-      <input id="userInput" placeholder="Ask something..." />
-      <button onclick="sendMessage()">Send</button>
-
-    </div>
-  </section>
-
-
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="section-container">
-      <h2>Contact</h2>
-      <p>Email: officialshivamchoudhary2009@gmail.com</p>
-      <p>Phone: 9430932904</p>
-
-      <button id="contactButton">Contact Me</button>
-    </div>
-  </section>
-
-
-  <!-- FOOTER -->
-  <footer>
-    <p>Built with ❤️ HTML, CSS & JavaScript</p>
-  </footer>
-
-
-  <!-- POPUP -->
-  <div id="popup" class="popup hidden">
-    <div class="popup-box">
-      <h3 id="popupText"></h3>
-      <button onclick="closePopup()">Close</button>
+    <div class="social">
+      <a href="#">GitHub</a>
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
     </div>
   </div>
+</section>
 
+<!-- ABOUT -->
+<section id="about" class="glass reveal">
+  <h2>About Me</h2>
+  <p>Modern portfolio with animations, chatbot, and glass UI.</p>
+</section>
 
-  <script src="script.js"></script>
+<!-- SKILLS -->
+<section id="skills" class="glass reveal">
+  <h2>Skills</h2>
+  <div class="skills-grid" id="skillsGrid"></div>
+</section>
 
+<!-- HIRE -->
+<section id="hire" class="glass reveal">
+  <h2>Hire Me</h2>
+  <p>Available for freelance frontend & UI projects.</p>
+  <button onclick="hireMe()">Hire Me Now</button>
+</section>
+
+<!-- CHATBOT -->
+<section id="chat" class="glass reveal">
+  <h2>AI Chat Assistant</h2>
+  <div class="chat-box" id="chatBox"></div>
+  <input id="userInput" placeholder="Ask something..." />
+  <button onclick="sendMessage()">Send</button>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="glass reveal">
+  <h2>Contact</h2>
+  <p>Email: officialshivamchoudhary2009@gmail.com</p>
+  <p>Phone: 9430932904</p>
+</section>
+
+<script src="script.js"></script>
 </body>
 </html>

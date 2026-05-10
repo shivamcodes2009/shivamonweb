@@ -1,137 +1,127 @@
-/* GLOBAL */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial;
+  scroll-behavior:smooth;
 }
 
-body {
-  color: white;
-  transition: 0.5s;
+body{
+  color:white;
+  transition:0.5s;
 }
 
-/* THEMES */
-body.blue-theme {
-  background: linear-gradient(-45deg, #1565c0, #000, #0d47a1);
-  background-size: 400% 400%;
-  animation: move 10s infinite;
+.blue-theme{
+  background:linear-gradient(-45deg,#1565c0,#000,#0d47a1);
+  background-size:400% 400%;
+  animation:move 10s infinite;
 }
 
-body.red-theme {
-  background: linear-gradient(-45deg, #c62828, #000, #8e0000);
-  background-size: 400% 400%;
-  animation: move 10s infinite;
+.red-theme{
+  background:linear-gradient(-45deg,#c62828,#000,#8e0000);
+  background-size:400% 400%;
+  animation:move 10s infinite;
 }
 
-@keyframes move {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes move{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
 /* NAVBAR */
-.navbar {
-  position: fixed;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 10%;
-  background: rgba(0,0,0,0.6);
+.navbar{
+  position:fixed;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:15px 10%;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
+  z-index:1000;
 }
 
-.nav-links {
-  display: flex;
-  gap: 20px;
-  list-style: none;
+.nav-links{
+  display:flex;
+  gap:20px;
+  list-style:none;
 }
 
-.nav-links a {
-  color: white;
-  text-decoration: none;
+.nav-links a{
+  color:white;
+  text-decoration:none;
 }
 
 /* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
-/* BUTTONS */
-button {
-  padding: 12px 25px;
-  border: none;
-  border-radius: 10px;
-  background: black;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+.profile{
+  width:120px;
+  border-radius:50%;
+  border:3px solid cyan;
+  animation:float 3s infinite ease-in-out;
 }
 
-button:hover {
-  box-shadow: 0 0 15px cyan;
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
 }
 
-/* SECTIONS */
-section {
-  padding: 100px 10%;
+.gradient-text{
+  font-size:40px;
+  background:linear-gradient(90deg,cyan,purple);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.cta button{
+  margin:10px;
+  padding:10px 20px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* GLASS EFFECT */
+.glass{
+  margin:100px 10%;
+  padding:30px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  border-radius:15px;
 }
 
 /* SKILLS */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 15px;
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:15px;
 }
 
-.skill-card {
-  background: rgba(0,0,0,0.4);
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  cursor: pointer;
+.skill-card{
+  padding:15px;
+  background:rgba(0,0,0,0.4);
+  border-radius:10px;
+  text-align:center;
 }
 
-/* HIRE */
-.hire-box {
-  text-align: center;
+/* CHAT */
+.chat-box{
+  height:200px;
+  overflow-y:auto;
+  background:rgba(0,0,0,0.4);
+  padding:10px;
+  margin-bottom:10px;
 }
 
-/* CHATBOT */
-.chat-box {
-  height: 200px;
-  overflow-y: auto;
-  background: rgba(0,0,0,0.4);
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-input {
-  padding: 10px;
-  width: 70%;
-}
-
-/* POPUP */
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.popup-box {
-  background: #111;
-  padding: 20px;
-}
-
-.hidden {
-  display: none;
+/* ANIMATION START STATE */
+.reveal{
+  opacity:0;
+  transform:translateY(50px);
 }
