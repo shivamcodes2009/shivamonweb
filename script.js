@@ -1,4 +1,4 @@
-const skills = ["HTML","CSS","JavaScript","GitHub","Python","AI Tools"];
+const skills = ["HTML","CSS","JavaScript","GitHub","Python","AI Tools" , "capcut editing" , "alight motion editing" , "phising" , "carding" , "social media" "content creation"];
 const grid = document.getElementById("skillsGrid");
 
 skills.forEach(s=>{
