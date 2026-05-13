@@ -3,86 +3,226 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Modern Portfolio Pro</title>
+  <title>Shivam | Modern Portfolio</title>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Remix Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
 
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
-<body class="blue-theme">
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <div class="logo">Portfolio Pro</div>
-  <ul class="nav-links">
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#hire">Hire</a></li>
-    <li><a href="#chat">AI Chat</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<body>
 
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-content">
-    <img src="profile.jpg.jpeg" class="profile" />
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+    <div class="logo">Shivam.</div>
 
-    <p>Hello, I'm</p>
-    <h1 class="gradient-text">Shivam Choudhary</h1>
-    <h2 id="role">Frontend Developer</h2>
-    <p id="typing"></p>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#hire">Hire Me</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <div class="cta">
-      <button>Hire Me</button>
-      <button>Download CV</button>
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="hero">
+
+    <div class="hero-left">
+      <p class="intro">HELLO I'M</p>
+
+      <h1>
+        Shivam <span>Choudhary</span>
+      </h1>
+
+      <h2 id="role">Frontend Developer</h2>
+
+      <p class="typing-text" id="typing"></p>
+
+      <div class="hero-buttons">
+        <a href="#hire">
+          <button class="primary-btn">
+            Hire Me
+          </button>
+        </a>
+
+        <a href="resume.pdf" download>
+          <button class="secondary-btn">
+            Download CV
+          </button>
+        </a>
+      </div>
+
+      <div class="social-icons">
+        <a href="#"><i class="ri-github-fill"></i></a>
+        <a href="#"><i class="ri-instagram-line"></i></a>
+        <a href="#"><i class="ri-linkedin-box-fill"></i></a>
+      </div>
     </div>
 
-    <div class="social">
-      <a href="#">GitHub</a>
-      <a href="#">Instagram</a>
-      <a href="#">LinkedIn</a>
+    <div class="hero-right">
+      <div class="image-circle">
+        <img src="profile.jpg.jpeg" alt="profile">
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- ABOUT -->
-<section id="about" class="glass reveal">
-  <h2>About Me</h2>
-  <p>Modern portfolio with animations, chatbot, and glass UI.</p>
-</section>
+  </section>
 
-<!-- SKILLS -->
-<section id="skills" class="glass reveal">
-  <h2>Skills</h2>
-  <div class="skills-grid" id="skillsGrid"></div>
-</section>
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="glass reveal">
 
-<!-- HIRE -->
-<section id="hire" class="glass reveal">
-  <h2>Hire Me</h2>
-  <p>Available for freelance frontend & UI projects.</p>
-  <button onclick="hireMe()">Hire Me Now</button>
-</section>
+    <h2 class="section-title">About Me</h2>
 
-<!-- CHATBOT -->
-<section id="chat" class="glass reveal">
-  <h2>AI Chat Assistant</h2>
-  <div class="chat-box" id="chatBox"></div>
-  <input id="userInput" placeholder="Ask something..." />
-  <button onclick="sendMessage()">Send</button>
-</section>
+    <div class="about-content">
 
-<!-- CONTACT -->
-<section id="contact" class="glass reveal">
-  <h2>Contact</h2>
-  <p>Email: officialshivamchoudhary2009@gmail.com</p>
-  <p>Phone: 9430932904</p>
-</section>
+      <div class="about-card">
+        <h3>Who Am I?</h3>
 
-<script src="script.js"></script>
+        <p>
+          I'm Shivam Choudhary, a passionate frontend developer and creative
+          web designer who loves building modern, interactive, and visually
+          impressive websites.
+        </p>
+
+        <p>
+          I enjoy transforming ideas into real digital experiences using
+          HTML, CSS, JavaScript, animations, and modern UI techniques.
+          My goal is to create websites that not only look amazing but
+          also feel smooth, fast, and professional.
+        </p>
+
+        <p>
+          Along with frontend development, I'm also exploring AI tools,
+          Python, GitHub, and advanced web technologies to continuously
+          improve my skills and build next-level projects.
+        </p>
+      </div>
+
+      <div class="stats">
+        <div class="stat-box">
+          <h1>10+</h1>
+          <p>Projects</p>
+        </div>
+
+        <div class="stat-box">
+          <h1>100%</h1>
+          <p>Creative</p>
+        </div>
+
+        <div class="stat-box">
+          <h1>24/7</h1>
+          <p>Learning</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section id="skills" class="glass reveal">
+
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills-grid" id="skillsGrid"></div>
+
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects" class="glass reveal">
+
+    <h2 class="section-title">Projects</h2>
+
+    <div class="project-container">
+
+      <div class="project-card">
+        <h3>Modern Portfolio</h3>
+        <p>Animated portfolio website with glassmorphism UI.</p>
+      </div>
+
+      <div class="project-card">
+        <h3>AI Chat UI</h3>
+        <p>Interactive chatbot interface with modern design.</p>
+      </div>
+
+      <div class="project-card">
+        <h3>Landing Page</h3>
+        <p>Responsive modern landing page using animations.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= HIRE ================= -->
+  <section id="hire" class="glass reveal">
+
+    <h2 class="section-title">Hire Me</h2>
+
+    <p class="hire-text">
+      Available for freelance frontend development, UI design,
+      portfolio websites, landing pages and creative web projects.
+    </p>
+
+    <button class="hire-btn" onclick="showEmail()">
+      Hire Me Now
+    </button>
+
+    <!-- EMAIL BOX -->
+    <div class="email-box" id="emailBox">
+
+      <p>Click below to send me an email directly 👇</p>
+
+      <a href="mailto:officialshivamchoudhary2009@gmail.com">
+        officialshivamchoudhary2009@gmail.com
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="glass reveal">
+
+    <h2 class="section-title">Contact</h2>
+
+    <div class="contact-container">
+
+      <div class="contact-card">
+        <i class="ri-mail-fill"></i>
+        <h3>Email</h3>
+
+        <a href="mailto:officialshivamchoudhary2009@gmail.com">
+          officialshivamchoudhary2009@gmail.com
+        </a>
+      </div>
+
+      <div class="contact-card">
+        <i class="ri-phone-fill"></i>
+        <h3>Phone</h3>
+        <p>9430932904</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <p>© 2026 Shivam Choudhary | All Rights Reserved</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+
 </body>
 </html>
