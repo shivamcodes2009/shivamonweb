@@ -1,66 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shivam | Modern Portfolio</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 
   <!-- Remix Icons -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
 
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
 </head>
 
 <body>
 
+  <!-- ================= LOADER ================= -->
+
+  <div class="loader">
+
+    <h1 class="loader-logo">Shivam.</h1>
+
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+
+    <p id="loading-text">0%</p>
+
+  </div>
+
+  <!-- ================= THEME TOGGLE ================= -->
+
+  <button class="theme-toggle" id="themeToggle">
+    <i class="ri-moon-fill"></i>
+  </button>
+
   <!-- ================= NAVBAR ================= -->
+
   <nav class="navbar">
+
     <div class="logo">Shivam.</div>
 
     <ul class="nav-links">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#hire">Hire Me</a></li>
-      <li><a href="#contact">Contact</a></li>
+
+      <li><a href="#hero" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#hire" class="nav-link">Hire Me</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+
     </ul>
+
   </nav>
 
   <!-- ================= HERO ================= -->
+
   <section class="hero" id="hero">
 
     <div class="hero-left">
-      <p class="intro">HELLO I'M</p>
 
-      <h1>
+      <p class="intro reveal-text">HELLO I'M</p>
+
+      <h1 class="reveal-text">
         Shivam <span>Choudhary</span>
       </h1>
 
-      <h2 id="role">Frontend Developer</h2>
+      <h2 id="role" class="reveal-text">Frontend Developer</h2>
 
       <p class="typing-text" id="typing"></p>
 
       <div class="hero-buttons">
+
         <a href="#hire">
-          <button class="primary-btn">
-            Hire Me
-          </button>
+          <button class="primary-btn">Hire Me</button>
         </a>
 
         <a href="resume.pdf" download>
-          <button class="secondary-btn">
-            Download CV
-          </button>
+          <button class="secondary-btn">Download CV</button>
         </a>
+
       </div>
 
       <div class="social-icons">
@@ -68,24 +92,29 @@
         <a href="#"><i class="ri-instagram-line"></i></a>
         <a href="#"><i class="ri-linkedin-box-fill"></i></a>
       </div>
+
     </div>
 
     <div class="hero-right">
+
       <div class="image-circle">
         <img src="profile.jpg.jpeg" alt="profile">
       </div>
+
     </div>
 
   </section>
 
   <!-- ================= ABOUT ================= -->
-  <section id="about" class="glass reveal">
 
-    <h2 class="section-title">About Me</h2>
+  <section id="about" class="glass reveal section">
+
+    <h2 class="section-title reveal-text">About Me</h2>
 
     <div class="about-content">
 
       <div class="about-card">
+
         <h3>Who Am I?</h3>
 
         <p>
@@ -97,18 +126,12 @@
         <p>
           I enjoy transforming ideas into real digital experiences using
           HTML, CSS, JavaScript, animations, and modern UI techniques.
-          My goal is to create websites that not only look amazing but
-          also feel smooth, fast, and professional.
         </p>
 
-        <p>
-          Along with frontend development, I'm also exploring AI tools,
-          Python, GitHub, and advanced web technologies to continuously
-          improve my skills and build next-level projects.
-        </p>
       </div>
 
       <div class="stats">
+
         <div class="stat-box">
           <h1>10+</h1>
           <p>Projects</p>
@@ -123,24 +146,28 @@
           <h1>24/7</h1>
           <p>Learning</p>
         </div>
+
       </div>
 
     </div>
+
   </section>
 
   <!-- ================= SKILLS ================= -->
-  <section id="skills" class="glass reveal">
 
-    <h2 class="section-title">Skills</h2>
+  <section id="skills" class="glass reveal section">
+
+    <h2 class="section-title reveal-text">Skills</h2>
 
     <div class="skills-grid" id="skillsGrid"></div>
 
   </section>
 
   <!-- ================= PROJECTS ================= -->
-  <section id="projects" class="glass reveal">
 
-    <h2 class="section-title">Projects</h2>
+  <section id="projects" class="glass reveal section">
+
+    <h2 class="section-title reveal-text">Projects</h2>
 
     <div class="project-container">
 
@@ -164,23 +191,22 @@
   </section>
 
   <!-- ================= HIRE ================= -->
-  <section id="hire" class="glass reveal">
 
-    <h2 class="section-title">Hire Me</h2>
+  <section id="hire" class="glass reveal section">
+
+    <h2 class="section-title reveal-text">Hire Me</h2>
 
     <p class="hire-text">
-      Available for freelance frontend development, UI design,
-      portfolio websites, landing pages and creative web projects.
+      Available for freelance frontend development.
     </p>
 
     <button class="hire-btn" onclick="showEmail()">
       Hire Me Now
     </button>
 
-    <!-- EMAIL BOX -->
     <div class="email-box" id="emailBox">
 
-      <p>Click below to send me an email directly 👇</p>
+      <p>Click below 👇</p>
 
       <a href="mailto:officialshivamchoudhary2009@gmail.com">
         officialshivamchoudhary2009@gmail.com
@@ -191,25 +217,33 @@
   </section>
 
   <!-- ================= CONTACT ================= -->
-  <section id="contact" class="glass reveal">
 
-    <h2 class="section-title">Contact</h2>
+  <section id="contact" class="glass reveal section">
+
+    <h2 class="section-title reveal-text">Contact</h2>
 
     <div class="contact-container">
 
       <div class="contact-card">
+
         <i class="ri-mail-fill"></i>
+
         <h3>Email</h3>
 
         <a href="mailto:officialshivamchoudhary2009@gmail.com">
           officialshivamchoudhary2009@gmail.com
         </a>
+
       </div>
 
       <div class="contact-card">
+
         <i class="ri-phone-fill"></i>
+
         <h3>Phone</h3>
+
         <p>9430932904</p>
+
       </div>
 
     </div>
@@ -217,12 +251,15 @@
   </section>
 
   <!-- ================= FOOTER ================= -->
+
   <footer>
     <p>© 2026 Shivam Choudhary | All Rights Reserved</p>
   </footer>
 
-  <!-- JS -->
+  <!-- ================= JS ================= -->
+
   <script src="script.js"></script>
 
 </body>
+
 </html>
