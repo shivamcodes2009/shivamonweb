@@ -10,7 +10,12 @@ const skills = [
   "Responsive Design",
   "UI/UX",
   "GSAP Animation",
-  "Frontend Development"
+  "Frontend Development",
+  "CapCut Editing",
+  "VN Editing",
+  "Alight Motion",
+  "After Effects",
+  "Content Creation"
 ];
 
 const grid = document.getElementById("skillsGrid");
@@ -30,7 +35,7 @@ skills.forEach(skill => {
 /* ================= TYPING EFFECT ================= */
 
 const text =
-"Building modern, animated and AI-powered websites with creative UI/UX experiences.";
+"Building modern, animated, AI-powered websites and creating professional digital experiences.";
 
 let i = 0;
 
@@ -55,8 +60,11 @@ function showEmail(){
   const box = document.getElementById("emailBox");
 
   if(box.style.display === "block"){
+
     box.style.display = "none";
+
   }else{
+
     box.style.display = "block";
   }
 }
@@ -97,16 +105,7 @@ gsap.from(".hero-right",{
   duration:1.5
 });
 
-/* floating image */
-
-gsap.to(".image-circle",{
-  y:15,
-  repeat:-1,
-  yoyo:true,
-  duration:2
-});
-
-/* ================= TEXT REVEAL ================= */
+/* text reveal */
 
 gsap.utils.toArray(".reveal-text").forEach((text)=>{
 
@@ -136,6 +135,7 @@ window.addEventListener("scroll", ()=>{
     const sectionTop = section.offsetTop;
 
     if(pageYOffset >= sectionTop - 200){
+
       current = section.getAttribute("id");
     }
 
@@ -146,6 +146,7 @@ window.addEventListener("scroll", ()=>{
     link.classList.remove("active");
 
     if(link.getAttribute("href") === `#${current}`){
+
       link.classList.add("active");
     }
 
@@ -173,6 +174,7 @@ const interval = setInterval(()=>{
       opacity:0,
       duration:1,
       onComplete:()=>{
+
         document.querySelector(".loader").style.display = "none";
       }
     });
@@ -197,29 +199,5 @@ toggleBtn.addEventListener("click", ()=>{
 
     toggleBtn.innerHTML = `<i class="ri-moon-fill"></i>`;
   }
-
-});
-
-/* ================= PAGE TRANSITION ================= */
-
-document.querySelectorAll("a").forEach(link=>{
-
-  link.addEventListener("click", function(e){
-
-    const href = this.getAttribute("href");
-
-    if(href.startsWith("#")){
-
-      e.preventDefault();
-
-      gsap.to(window,{
-        duration:1,
-        scrollTo:href,
-        ease:"power2.inOut"
-      });
-
-    }
-
-  });
 
 });
