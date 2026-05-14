@@ -15,30 +15,6 @@ body{
   transition:0.4s;
 }
 
-/* LIGHT MODE */
-
-body.light-mode{
-  background:#f5f5f5;
-  color:black;
-}
-
-body.light-mode .glass{
-  background:rgba(255,255,255,0.7);
-  color:black;
-}
-
-body.light-mode .navbar{
-  background:rgba(255,255,255,0.7);
-}
-
-body.light-mode .project-card,
-body.light-mode .skill-card,
-body.light-mode .stat-box,
-body.light-mode .contact-card{
-  background:white;
-  color:black;
-}
-
 @keyframes bg{
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
@@ -81,23 +57,6 @@ body.light-mode .contact-card{
 #loading-text{
   margin-top:15px;
   color:white;
-}
-
-/* ================= THEME BUTTON ================= */
-
-.theme-toggle{
-  position:fixed;
-  top:20px;
-  right:20px;
-  width:50px;
-  height:50px;
-  border:none;
-  border-radius:50%;
-  background:cyan;
-  color:black;
-  font-size:22px;
-  z-index:9999;
-  cursor:pointer;
 }
 
 /* ================= NAVBAR ================= */
