@@ -201,3 +201,51 @@ toggleBtn.addEventListener("click", ()=>{
   }
 
 });
+
+/* ================= BACKGROUND MUSIC ================= */
+
+const bgMusic = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicToggle");
+
+let musicStarted = false;
+
+/* volume */
+
+bgMusic.volume = 0.3;
+
+/* START MUSIC AFTER FIRST CLICK */
+
+document.body.addEventListener("click", () => {
+
+  if(!musicStarted){
+
+    bgMusic.play();
+
+    musicStarted = true;
+
+    musicBtn.innerHTML =
+    `<i class="ri-volume-up-fill"></i>`;
+  }
+
+}, { once:true });
+
+/* MUTE / UNMUTE */
+
+musicBtn.addEventListener("click", () => {
+
+  if(bgMusic.paused){
+
+    bgMusic.play();
+
+    musicBtn.innerHTML =
+    `<i class="ri-volume-up-fill"></i>`;
+
+  }else{
+
+    bgMusic.pause();
+
+    musicBtn.innerHTML =
+    `<i class="ri-volume-mute-fill"></i>`;
+  }
+
+});
