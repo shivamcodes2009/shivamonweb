@@ -526,31 +526,122 @@ footer{
 
 }
 
-/* ================= MUSIC BUTTON ================= */
+/* ================= ADVANCE MUSIC BUTTON ================= */
 
 .music-toggle{
   position:fixed;
-  top:90px;
-  right:20px;
-  width:55px;
-  height:55px;
+  bottom:30px;
+  right:30px;
+
+  width:70px;
+  height:70px;
+
   border:none;
   border-radius:50%;
+
   background:rgba(0,255,255,0.15);
-  backdrop-filter:blur(10px);
-  color:cyan;
-  font-size:22px;
+
+  backdrop-filter:blur(12px);
+
+  border:2px solid cyan;
+
   cursor:pointer;
-  z-index:99999;
-  transition:0.3s;
-  border:1px solid rgba(0,255,255,0.3);
-  box-shadow:0 0 20px rgba(0,255,255,0.3);
+
+  z-index:999999;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  transition:0.4s;
+
+  box-shadow:
+  0 0 10px cyan,
+  0 0 25px rgba(0,255,255,0.6);
+
+  overflow:hidden;
 }
 
 .music-toggle:hover{
-  transform:scale(1.1);
+  transform:scale(1.12) rotate(8deg);
+
+  box-shadow:
+  0 0 15px cyan,
+  0 0 35px cyan,
+  0 0 60px rgba(0,255,255,0.8);
+}
+
+/* MUSIC BARS */
+
+.music-bars{
+  display:flex;
+  align-items:flex-end;
+  gap:4px;
+  height:28px;
+}
+
+.music-bars span{
+  width:5px;
   background:cyan;
-  color:black;
+  border-radius:10px;
+  animation:none;
+  transition:0.3s;
+}
+
+/* DIFFERENT HEIGHTS */
+
+.music-bars span:nth-child(1){
+  height:10px;
+}
+
+.music-bars span:nth-child(2){
+  height:22px;
+}
+
+.music-bars span:nth-child(3){
+  height:16px;
+}
+
+.music-bars span:nth-child(4){
+  height:26px;
+}
+
+/* PLAYING ANIMATION */
+
+.music-toggle.playing .music-bars span{
+  animation:musicWave 0.8s infinite ease-in-out;
+}
+
+.music-toggle.playing .music-bars span:nth-child(2){
+  animation-delay:0.1s;
+}
+
+.music-toggle.playing .music-bars span:nth-child(3){
+  animation-delay:0.2s;
+}
+
+.music-toggle.playing .music-bars span:nth-child(4){
+  animation-delay:0.3s;
+}
+
+/* ANIMATION */
+
+@keyframes musicWave{
+
+  0%{
+    transform:scaleY(0.4);
+    opacity:0.5;
+  }
+
+  50%{
+    transform:scaleY(1.4);
+    opacity:1;
+  }
+
+  100%{
+    transform:scaleY(0.4);
+    opacity:0.5;
+  }
 }
 
 /* MOBILE */
@@ -558,11 +649,10 @@ footer{
 @media(max-width:600px){
 
   .music-toggle{
-    top:80px;
-    right:15px;
-    width:50px;
-    height:50px;
-    font-size:20px;
+    width:60px;
+    height:60px;
+    bottom:20px;
+    right:20px;
   }
 
 }

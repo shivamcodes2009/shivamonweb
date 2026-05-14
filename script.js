@@ -202,50 +202,40 @@ toggleBtn.addEventListener("click", ()=>{
 
 });
 
-/* ================= BACKGROUND MUSIC ================= */
+/* ================= ADVANCE BACKGROUND MUSIC ================= */
 
 const bgMusic = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicToggle");
 
-let musicStarted = false;
+const musicToggle = document.getElementById("musicToggle");
 
-/* volume */
+/* VOLUME */
 
-bgMusic.volume = 0.3;
+bgMusic.volume = 0.7;
 
-/* START MUSIC AFTER FIRST CLICK */
+/* BUTTON CLICK */
 
-document.body.addEventListener("click", () => {
+musicToggle.addEventListener("click", async () => {
 
-  if(!musicStarted){
+  try{
 
-    bgMusic.play();
+    if(bgMusic.paused){
 
-    musicStarted = true;
+      await bgMusic.play();
 
-    musicBtn.innerHTML =
-    `<i class="ri-volume-up-fill"></i>`;
-  }
+      musicToggle.classList.add("playing");
 
-}, { once:true });
+    }else{
 
-/* MUTE / UNMUTE */
+      bgMusic.pause();
 
-musicBtn.addEventListener("click", () => {
+      musicToggle.classList.remove("playing");
 
-  if(bgMusic.paused){
+    }
 
-    bgMusic.play();
+  }catch(err){
 
-    musicBtn.innerHTML =
-    `<i class="ri-volume-up-fill"></i>`;
+    console.log("Music play failed:", err);
 
-  }else{
-
-    bgMusic.pause();
-
-    musicBtn.innerHTML =
-    `<i class="ri-volume-mute-fill"></i>`;
   }
 
 });
