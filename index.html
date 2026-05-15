@@ -231,6 +231,60 @@
 
   </section>
 
+  <!-- ================= APPOINTMENT SECTION ================= -->
+
+<section id="appointment" class="glass reveal section">
+
+  <h2 class="section-title reveal-text">Book Appointment</h2>
+
+  <div class="appointment-box">
+
+    <h3>Pay ₹50 To Confirm Appointment</h3>
+
+    <img src="qr.jpeg" alt="QR Code" class="qr-image">
+
+    <p class="payment-note">
+      Scan this QR and pay ₹50
+    </p>
+
+    <div class="utr-box">
+
+      <h4>Enter UTR Number</h4>
+
+      <input type="text" id="utrInput" placeholder="Paste UTR Number">
+
+      <button onclick="verifyPayment()" class="verify-btn">
+        Verify Payment
+      </button>
+
+    </div>
+
+    <div class="success-box" id="successBox">
+
+      <i class="ri-checkbox-circle-fill"></i>
+
+      <h3>Payment Successful</h3>
+
+      <p>
+        Send screenshot with your UTR number on WhatsApp.
+      </p>
+
+      <a
+        href="https://wa.me/919430932904?text=Hello%20Shivam%2C%20I%20have%20completed%20the%20appointment%20payment.%20Here%20is%20my%20UTR%20number%20-%20"
+        target="_blank">
+
+        <button class="whatsapp-btn">
+          Send On WhatsApp
+        </button>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
   <!-- ================= HIRE ================= -->
 
   <section id="hire" class="glass reveal section">

@@ -48,7 +48,9 @@ function typeEffect(){
     i++;
 
     setTimeout(typeEffect, 40);
+
   }
+
 }
 
 typeEffect();
@@ -66,14 +68,40 @@ function showEmail(){
   }else{
 
     box.style.display = "block";
+
   }
+
+}
+
+/* ================= VERIFY PAYMENT ================= */
+
+function verifyPayment(){
+
+  const utr = document.getElementById("utrInput").value;
+
+  const successBox = document.getElementById("successBox");
+
+  if(utr.trim() === ""){
+
+    alert("Please enter UTR number");
+
+    return;
+
+  }
+
+  successBox.style.display = "block";
+
+  successBox.style.opacity = "1";
+
+  successBox.style.transform = "scale(1)";
+
 }
 
 /* ================= GSAP ================= */
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* reveal */
+/* reveal animation */
 
 gsap.utils.toArray(".reveal").forEach((el)=>{
 
@@ -91,7 +119,7 @@ gsap.utils.toArray(".reveal").forEach((el)=>{
 
 });
 
-/* hero */
+/* hero animation */
 
 gsap.from(".hero-left",{
   x:-100,
@@ -124,6 +152,7 @@ gsap.utils.toArray(".reveal-text").forEach((text)=>{
 /* ================= ACTIVE NAVBAR ================= */
 
 const sections = document.querySelectorAll("section");
+
 const navLinks = document.querySelectorAll(".nav-link");
 
 window.addEventListener("scroll", ()=>{
@@ -137,6 +166,7 @@ window.addEventListener("scroll", ()=>{
     if(pageYOffset >= sectionTop - 200){
 
       current = section.getAttribute("id");
+
     }
 
   });
@@ -148,6 +178,7 @@ window.addEventListener("scroll", ()=>{
     if(link.getAttribute("href") === `#${current}`){
 
       link.classList.add("active");
+
     }
 
   });
@@ -176,28 +207,10 @@ const interval = setInterval(()=>{
       onComplete:()=>{
 
         document.querySelector(".loader").style.display = "none";
+
       }
     });
 
   }
 
 },20);
-
-/* ================= DARK LIGHT MODE ================= */
-
-const toggleBtn = document.getElementById("themeToggle");
-
-toggleBtn.addEventListener("click", ()=>{
-
-  document.body.classList.toggle("light-mode");
-
-  if(document.body.classList.contains("light-mode")){
-
-    toggleBtn.innerHTML = `<i class="ri-sun-fill"></i>`;
-
-  }else{
-
-    toggleBtn.innerHTML = `<i class="ri-moon-fill"></i>`;
-  }
-
-});
