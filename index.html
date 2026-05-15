@@ -235,23 +235,57 @@
 
 <section id="appointment" class="glass reveal section">
 
-  <h2 class="section-title reveal-text">Book Appointment</h2>
+  <h2 class="section-title reveal-text">
+    Book Appointment
+  </h2>
 
-  <div class="appointment-box">
+  <!-- OPEN BUTTON -->
 
-    <h3>Pay ₹50 To Confirm Appointment</h3>
+  <button class="open-payment-btn" onclick="openPayment()">
+    Book Appointment
+  </button>
 
-    <img src="qr.jpeg" alt="QR Code" class="qr-image">
+</section>
 
-    <p class="payment-note">
-      Scan this QR and pay ₹50
+
+<!-- ================= PAYMENT MODAL ================= -->
+
+<div class="payment-modal" id="paymentModal">
+
+  <div class="payment-container">
+
+    <!-- CLOSE -->
+
+    <span class="close-btn" onclick="closePayment()">
+      ✕
+    </span>
+
+    <h2>
+      Complete Payment
+    </h2>
+
+    <p class="payment-text">
+      Pay ₹50 to confirm your appointment
     </p>
 
-    <div class="utr-box">
+    <!-- QR -->
 
-      <h4>Enter UTR Number</h4>
+    <img src="qr.jpeg" class="qr-image">
 
-      <input type="text" id="utrInput" placeholder="Paste UTR Number">
+    <!-- PAY BUTTON -->
+
+    <button class="paid-btn" onclick="showUTR()">
+      I Have Paid
+    </button>
+
+    <!-- UTR -->
+
+    <div class="utr-area" id="utrArea">
+
+      <input
+        type="text"
+        id="utrInput"
+        placeholder="Enter UTR Number">
 
       <button onclick="verifyPayment()" class="verify-btn">
         Verify Payment
@@ -259,29 +293,9 @@
 
     </div>
 
-    <div class="success-box" id="successBox">
-
-      <i class="ri-checkbox-circle-fill"></i>
-
-      <h3>Payment Successful</h3>
-
-      <p>
-        Send screenshot with your UTR number on WhatsApp.
-      </p>
-
-      <a
-        href="https://wa.me/919430932904?text=Hello%20Shivam%2C%20I%20have%20completed%20the%20appointment%20payment.%20Here%20is%20my%20UTR%20number%20-%20"
-        target="_blank">
-
-        <button class="whatsapp-btn">
-          Send On WhatsApp
-        </button>
-
-      </a>
-
-    </div>
-
   </div>
+
+</div>
 
 </section>
 
@@ -354,6 +368,32 @@
   <!-- ================= JS ================= -->
 
   <script src="script.js"></script>
+
+  <!-- SUCCESS POPUP -->
+
+<div class="success-popup" id="successPopup">
+
+  <div class="success-card">
+
+    <div class="success-icon">
+      ✓
+    </div>
+
+    <h1>
+      Payment Successful
+    </h1>
+
+    <p>
+      Your appointment payment has been verified successfully.
+    </p>
+
+    <button onclick="goWhatsApp()" class="success-btn">
+      Send On WhatsApp
+    </button>
+
+  </div>
+
+</div>
 
 </body>
 

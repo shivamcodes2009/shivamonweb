@@ -73,28 +73,77 @@ function showEmail(){
 
 }
 
-/* ================= VERIFY PAYMENT ================= */
+/* OPEN MODAL */
+
+function openPayment(){
+
+  document
+    .getElementById("paymentModal")
+    .classList.add("show");
+}
+
+/* CLOSE MODAL */
+
+function closePayment(){
+
+  document
+    .getElementById("paymentModal")
+    .classList.remove("show");
+}
+
+/* SHOW UTR */
+
+function showUTR(){
+
+  document
+    .getElementById("utrArea")
+    .style.display = "block";
+}
+
+let savedUTR = "";
+
+/* VERIFY */
 
 function verifyPayment(){
 
-  const utr = document.getElementById("utrInput").value;
-
-  const successBox = document.getElementById("successBox");
+  const utr =
+  document.getElementById("utrInput").value;
 
   if(utr.trim() === ""){
 
-    alert("Please enter UTR number");
+    alert("Enter UTR Number");
 
     return;
-
   }
 
-  successBox.style.display = "block";
+  savedUTR = utr;
 
-  successBox.style.opacity = "1";
+  /* CLOSE PAYMENT MODAL */
 
-  successBox.style.transform = "scale(1)";
+  document
+    .getElementById("paymentModal")
+    .classList.remove("show");
 
+  /* SHOW SUCCESS POPUP */
+
+  document
+    .getElementById("successPopup")
+    .classList.add("show");
+}
+
+/* WHATSAPP */
+
+function goWhatsApp(){
+
+  const phone = "919430932904";
+
+  const message =
+  `Hello Shivam, I have completed the appointment payment.%0A%0AMy UTR Number is: ${savedUTR}`;
+
+  const whatsappURL =
+  `https://wa.me/${phone}?text=${message}`;
+
+  window.open(whatsappURL, "_blank");
 }
 
 /* ================= GSAP ================= */
