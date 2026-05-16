@@ -1,265 +1,250 @@
-/* ================= SKILLS ================= */
+gsap.registerPlugin(ScrollTrigger);
 
+/* ===== SKILLS ===== */
 const skills = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "GitHub",
-  "Python",
-  "AI Tools",
-  "Responsive Design",
-  "UI/UX",
-  "GSAP Animation",
-  "Frontend Development",
-  "CapCut Editing",
-  "VN Editing",
-  "Alight Motion",
-  "After Effects",
-  "Content Creation"
+  "HTML", "CSS", "JavaScript", "GitHub", "Python",
+  "AI Tools", "Responsive Design", "UI/UX", "GSAP Animation",
+  "Frontend Development", "CapCut Editing", "VN Editing",
+  "Alight Motion", "After Effects", "Content Creation"
 ];
 
 const grid = document.getElementById("skillsGrid");
 
-skills.forEach(skill => {
+function loadSkills() {
+  skills.forEach(skill => {
+    let div = document.createElement("div");
+    div.className = "skill-card";
+    div.innerHTML = `<h3>${skill}</h3>`;
+    grid.appendChild(div);
+  });
+}
 
-  let div = document.createElement("div");
+/* ===== TYPING ===== */
+const lines = [
+  "Building modern, animated, AI-powered websites and creating professional digital experiences.",
+  "Transforming ideas into real digital experiences using HTML, CSS & JavaScript.",
+  "Creating cinematic video content & stunning UI designs."
+];
 
-  div.className = "skill-card";
+let lineIndex = 0, charIndex = 0, deleting = false;
+const typingEl = document.getElementById("typing");
 
-  div.innerHTML = `<h3>${skill}</h3>`;
+function typeEffect() {
+  const current = lines[lineIndex];
 
-  grid.appendChild(div);
+  if (!deleting) {
+    typingEl.textContent = current.substring(0, charIndex + 1);
+    charIndex++;
 
+    if (charIndex === current.length) {
+      deleting = true;
+      setTimeout(typeEffect, 1500);
+      return;
+    }
+  } else {
+    typingEl.textContent = current.substring(0, charIndex - 1);
+    charIndex--;
+
+    if (charIndex === 0) {
+      deleting = false;
+      lineIndex = (lineIndex + 1) % lines.length;
+    }
+  }
+
+  setTimeout(typeEffect, deleting ? 30 : 50);
+}
+
+/* ===== LOADER ===== */
+let progress = 0;
+const fill = document.getElementById("loaderFill");
+const pct = document.getElementById("loaderPercent");
+const loader = document.getElementById("loader");
+
+const interval = setInterval(() => {
+  progress++;
+  fill.style.width = progress + "%";
+  pct.textContent = progress + "%";
+
+  if (progress >= 100) {
+    clearInterval(interval);
+
+    setTimeout(() => {
+      gsap.to(loader, {
+        opacity: 0,
+        duration: 0.8,
+        onComplete: () => {
+          loader.style.display = "none";
+
+          loadSkills(); // ⭐ IMPORTANT FIX HERE
+
+          startHeroAnim();
+          typeEffect();
+
+          // ⭐ FIX: refresh ScrollTrigger AFTER DOM is ready
+          ScrollTrigger.refresh();
+        }
+      });
+    }, 200);
+  }
+}, 15);
+
+/* ===== HERO ===== */
+function startHeroAnim() {
+  gsap.from(".hero-left > *", {
+    y: 40,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.1,
+    ease: "power3.out"
+  });
+
+  gsap.from(".hero-right", {
+    x: 60,
+    opacity: 0,
+    duration: 1.1,
+    delay: 0.2
+  });
+}
+
+/* ===== REVEAL FIX ===== */
+gsap.utils.toArray(".reveal").forEach(el => {
+  gsap.fromTo(el,
+    { opacity: 0, y: 60 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      }
+    }
+  );
 });
 
-/* ================= TYPING EFFECT ================= */
+/* ===== SKILLS ANIMATION FIX ===== */
+ScrollTrigger.batch(".skill-card", {
+  onEnter: batch =>
+    gsap.to(batch, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.05,
+      duration: 0.6,
+      ease: "power2.out"
+    }),
+  start: "top 90%"
+});
 
-const text =
-"Building modern, animated, AI-powered websites and creating professional digital experiences.";
+/* ===== PROJECTS ===== */
+gsap.utils.toArray(".project-card").forEach((card) => {
+  gsap.fromTo(card,
+    { y: 60, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: card,
+        start: "top 90%",
+        toggleActions: "play none none reverse"
+      }
+    }
+  );
+});
 
-let i = 0;
+/* ===== STATS ===== */
+gsap.from(".stat-box", {
+  scrollTrigger: {
+    trigger: ".stats",
+    start: "top 85%"
+  },
+  scale: 0.9,
+  opacity: 0,
+  duration: 0.6,
+  stagger: 0.1
+});
 
-function typeEffect(){
+/* ===== NAV ACTIVE ===== */
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-link");
+const navbar = document.getElementById("navbar");
 
-  if(i < text.length){
+window.addEventListener("scroll", () => {
+  navbar.classList.toggle("scrolled", window.scrollY > 50);
 
-    document.getElementById("typing").textContent += text.charAt(i);
+  let current = "";
+  sections.forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 200) current = sec.id;
+  });
 
-    i++;
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("active");
+    }
+  });
+});
 
-    setTimeout(typeEffect, 40);
+/* ===== MOBILE MENU ===== */
+document.getElementById("menuBtn").onclick = () =>
+  document.getElementById("mobileMenu").classList.add("open");
 
-  }
+document.getElementById("mobileClose").onclick = () =>
+  document.getElementById("mobileMenu").classList.remove("open");
 
-}
+document.querySelectorAll(".mob-link").forEach(link =>
+  link.addEventListener("click", () =>
+    document.getElementById("mobileMenu").classList.remove("open")
+  )
+);
 
-typeEffect();
-
-/* ================= SHOW EMAIL ================= */
-
-function showEmail(){
-
+/* ===== EMAIL ===== */
+function showEmail() {
   const box = document.getElementById("emailBox");
-
-  if(box.style.display === "block"){
-
-    box.style.display = "none";
-
-  }else{
-
-    box.style.display = "block";
-
-  }
-
+  box.style.display = box.style.display === "block" ? "none" : "block";
 }
 
-/* OPEN MODAL */
-
-function openPayment(){
-
-  document
-    .getElementById("paymentModal")
-    .classList.add("show");
+/* ===== PAYMENT ===== */
+function openPayment() {
+  document.getElementById("paymentModal").classList.add("show");
+}
+function closePayment() {
+  document.getElementById("paymentModal").classList.remove("show");
 }
 
-/* CLOSE MODAL */
+document.getElementById("paymentModal").addEventListener("click", e => {
+  if (e.target === e.currentTarget) closePayment();
+});
 
-function closePayment(){
-
-  document
-    .getElementById("paymentModal")
-    .classList.remove("show");
-}
-
-/* SHOW UTR */
-
-function showUTR(){
-
-  document
-    .getElementById("utrArea")
-    .style.display = "block";
+function showUTR() {
+  document.getElementById("utrArea").style.display = "block";
 }
 
 let savedUTR = "";
 
-/* VERIFY */
-
-function verifyPayment(){
-
-  const utr =
-  document.getElementById("utrInput").value;
-
-  if(utr.trim() === ""){
-
-    alert("Enter UTR Number");
-
-    return;
-  }
+function verifyPayment() {
+  const utr = document.getElementById("utrInput").value.trim();
+  if (!utr) return;
 
   savedUTR = utr;
+  closePayment();
 
-  /* CLOSE PAYMENT MODAL */
-
-  document
-    .getElementById("paymentModal")
-    .classList.remove("show");
-
-  /* SHOW SUCCESS POPUP */
-
-  document
-    .getElementById("successPopup")
-    .classList.add("show");
+  setTimeout(() => {
+    document.getElementById("successPopup").classList.add("show");
+  }, 300);
 }
 
-/* WHATSAPP */
-
-function goWhatsApp(){
-
+function goWhatsApp() {
   const phone = "919430932904";
-
-  const message =
-  `Hello Shivam, I have completed the appointment payment.%0A%0AMy UTR Number is: ${savedUTR}`;
-
-  const whatsappURL =
-  `https://wa.me/${phone}?text=${message}`;
-
-  window.open(whatsappURL, "_blank");
+  const msg = `Hello Shivam, Payment done. UTR: ${savedUTR}`;
+  window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
 }
 
-/* ================= GSAP ================= */
-
-gsap.registerPlugin(ScrollTrigger);
-
-/* reveal animation */
-
-gsap.utils.toArray(".reveal").forEach((el)=>{
-
-  gsap.to(el,{
-    scrollTrigger:{
-      trigger:el,
-      start:"top 80%"
-    },
-
-    opacity:1,
-    y:0,
-    duration:1.2,
-    ease:"power3.out"
-  });
-
+/* SUCCESS POPUP CLOSE */
+document.getElementById("successPopup").addEventListener("click", e => {
+  if (e.target === e.currentTarget)
+    e.currentTarget.classList.remove("show");
 });
-
-/* hero animation */
-
-gsap.from(".hero-left",{
-  x:-100,
-  opacity:0,
-  duration:1.5
-});
-
-gsap.from(".hero-right",{
-  x:100,
-  opacity:0,
-  duration:1.5
-});
-
-/* text reveal */
-
-gsap.utils.toArray(".reveal-text").forEach((text)=>{
-
-  gsap.from(text,{
-    y:100,
-    opacity:0,
-    duration:1,
-    scrollTrigger:{
-      trigger:text,
-      start:"top 85%"
-    }
-  });
-
-});
-
-/* ================= ACTIVE NAVBAR ================= */
-
-const sections = document.querySelectorAll("section");
-
-const navLinks = document.querySelectorAll(".nav-link");
-
-window.addEventListener("scroll", ()=>{
-
-  let current = "";
-
-  sections.forEach(section => {
-
-    const sectionTop = section.offsetTop;
-
-    if(pageYOffset >= sectionTop - 200){
-
-      current = section.getAttribute("id");
-
-    }
-
-  });
-
-  navLinks.forEach(link => {
-
-    link.classList.remove("active");
-
-    if(link.getAttribute("href") === `#${current}`){
-
-      link.classList.add("active");
-
-    }
-
-  });
-
-});
-
-/* ================= LOADER ================= */
-
-let load = 0;
-
-const interval = setInterval(()=>{
-
-  load++;
-
-  document.getElementById("loading-text").innerText = load + "%";
-
-  document.querySelector(".loader-progress").style.width = load + "%";
-
-  if(load >= 100){
-
-    clearInterval(interval);
-
-    gsap.to(".loader",{
-      opacity:0,
-      duration:1,
-      onComplete:()=>{
-
-        document.querySelector(".loader").style.display = "none";
-
-      }
-    });
-
-  }
-
-},20);

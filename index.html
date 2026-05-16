@@ -1,399 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Shivam | Modern Portfolio</title>
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Remix Icons -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
-
-  <!-- GSAP -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
 </head>
-
 <body>
 
   <!-- ================= LOADER ================= -->
-
-  <div class="loader">
-
-    <h1 class="loader-logo">Loading...</h1>
-
-    <div class="loader-bar">
-      <div class="loader-progress"></div>
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <svg class="loader-svg" viewBox="0 0 300 70">
+        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" class="loader-svg-text">SHIVAM</text>
+      </svg>
+      <div class="loader-bar-wrap">
+        <div class="loader-bar-fill" id="loaderFill"></div>
+      </div>
+      <p class="loader-percent" id="loaderPercent">0%</p>
     </div>
-
-    <p id="loading-text">0%</p>
-
   </div>
 
   <!-- ================= NAVBAR ================= -->
-
-  <nav class="navbar">
-
-    <div class="logo">Shivam.</div>
-
+  <nav class="navbar" id="navbar">
+    <div class="logo">Shivam<span>.</span></div>
     <ul class="nav-links">
-
       <li><a href="#hero" class="nav-link active">Home</a></li>
-
       <li><a href="#about" class="nav-link">About</a></li>
-
       <li><a href="#skills" class="nav-link">Skills</a></li>
-
       <li><a href="#projects" class="nav-link">Projects</a></li>
-
-      <!-- CHANGED -->
-      <li>
-        <a href="mailto:officialshivamchoudhary2009@gmail.com" class="nav-link">
-          Hire Me
-        </a>
-      </li>
-
+      <li><a href="#appointment" class="nav-link">Appointment</a></li>
       <li><a href="#contact" class="nav-link">Contact</a></li>
-
+      <li><a href="mailto:officialshivamchoudhary2009@gmail.com" class="nav-hire">Hire Me</a></li>
     </ul>
-
+    <button class="menu-btn" id="menuBtn"><i class="ri-menu-3-line"></i></button>
   </nav>
 
-  <!-- ================= HERO ================= -->
+  <!-- ================= MOBILE MENU ================= -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose"><i class="ri-close-line"></i></button>
+    <ul>
+      <li><a href="#hero" class="mob-link">Home</a></li>
+      <li><a href="#about" class="mob-link">About</a></li>
+      <li><a href="#skills" class="mob-link">Skills</a></li>
+      <li><a href="#projects" class="mob-link">Projects</a></li>
+      <li><a href="#appointment" class="mob-link">Appointment</a></li>
+      <li><a href="#contact" class="mob-link">Contact</a></li>
+      <li><a href="mailto:officialshivamchoudhary2009@gmail.com" class="mob-link mob-hire">Hire Me</a></li>
+    </ul>
+  </div>
 
+  <!-- ================= HERO ================= -->
   <section class="hero" id="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
 
     <div class="hero-left">
-
-      <p class="intro reveal-text">HELLO I'M</p>
-
-      <h1 class="reveal-text">
-        Shivam <span>Choudhary</span>
-      </h1>
-
-      <h2 id="role" class="reveal-text">Frontend Developer</h2>
-
+      <div class="badge"><span class="badge-dot"></span> Available for Freelance</div>
+      <p class="intro">HELLO I'M</p>
+      <h1>Shivam <span>Choudhary</span></h1>
+      <h2 id="role">Frontend Developer</h2>
       <p class="typing-text" id="typing"></p>
-
       <div class="hero-buttons">
-
         <a href="mailto:officialshivamchoudhary2009@gmail.com">
-          <button class="primary-btn">Hire Me</button>
+          <button class="primary-btn"><span>Hire Me</span> <i class="ri-arrow-right-up-line"></i></button>
         </a>
-
         <a href="shivam cv.pdf" download>
-          <button class="secondary-btn">Download CV</button>
+          <button class="secondary-btn"><i class="ri-download-2-line"></i> <span>Download CV</span></button>
         </a>
-
       </div>
-
-      <!-- SOCIAL LINKS ADDED -->
-
       <div class="social-icons">
-
-        <a href="https://github.com/" target="_blank">
-          <i class="ri-github-fill"></i>
-        </a>
-
-        <a href="https://www.instagram.com/svmmmk__?igsh=MTR1NjRxNmg2YWQ2eQ==" target="_blank">
-          <i class="ri-instagram-line"></i>
-        </a>
-
-        <a href="https://linkedin.com/" target="_blank">
-          <i class="ri-linkedin-box-fill"></i>
-        </a>
-
-         <a href="https://t.me/shivamsera" target="_blank">
-    <i class="ri-telegram-fill"></i>
-  </a>
-</div>
-
+        <a href="https://github.com/" target="_blank"><i class="ri-github-fill"></i></a>
+        <a href="https://www.instagram.com/svmmmk__?igsh=MTR1NjRxNmg2YWQ2eQ==" target="_blank"><i class="ri-instagram-line"></i></a>
+        <a href="https://linkedin.com/" target="_blank"><i class="ri-linkedin-box-fill"></i></a>
+        <a href="https://t.me/shivamsera" target="_blank"><i class="ri-telegram-fill"></i></a>
       </div>
-
     </div>
 
     <div class="hero-right">
-
-      <div class="image-circle">
-        <img src="profile two.avif" alt="profile">
+      <div class="image-wrap">
+        <div class="image-ring ring1"></div>
+        <div class="image-ring ring2"></div>
+        <div class="image-circle">
+          <img src="profile two.avif" alt="Shivam Choudhary" />
+        </div>
       </div>
-
     </div>
-
   </section>
 
   <!-- ================= ABOUT ================= -->
-
   <section id="about" class="glass reveal section">
-
-    <h2 class="section-title reveal-text">About Me</h2>
-
+    <div class="section-tag">/ ABOUT ME</div>
+    <h2 class="section-title">About <span>Me</span></h2>
     <div class="about-content">
-
       <div class="about-card">
-
         <h3>Who Am I?</h3>
-
-        <p>
-          I'm Shivam Choudhary, a passionate frontend developer and creative
-          web designer who loves building modern, interactive, and visually
-          impressive websites.
-        </p>
-
-        <p>
-          I enjoy transforming ideas into real digital experiences using
-          HTML, CSS, JavaScript, animations, and modern UI techniques.
-        </p>
-
-        <!-- NEW PROFESSIONAL PARAGRAPH -->
-
-        <p>
-          Along with web development, I am also a professional video editor
-          experienced in CapCut, VN, Alight Motion, and Adobe After Effects.
-          I use modern AI tools to enhance editing quality, create cinematic
-          visuals, and deliver highly engaging digital content for brands,
-          creators, and social media platforms.
-        </p>
-
-        <!-- NEW CONTENT CREATION PARAGRAPH -->
-
-        <p>
-          I also have strong knowledge of content creation and social media
-          presentation. I understand modern trends, audience engagement,
-          creative storytelling, and branding techniques that help content
-          stand out professionally across multiple platforms.
-        </p>
-
+        <p>I'm Shivam Choudhary, a passionate frontend developer and creative web designer who loves building modern, interactive, and visually impressive websites.</p>
+        <p>I enjoy transforming ideas into real digital experiences using HTML, CSS, JavaScript, animations, and modern UI techniques.</p>
+        <p>Along with web development, I am also a professional video editor experienced in CapCut, VN, Alight Motion, and Adobe After Effects. I use modern AI tools to enhance editing quality, create cinematic visuals, and deliver highly engaging digital content for brands, creators, and social media platforms.</p>
+        <p>I also have strong knowledge of content creation and social media presentation. I understand modern trends, audience engagement, creative storytelling, and branding techniques that help content stand out professionally across multiple platforms.</p>
       </div>
-
       <div class="stats">
-
         <div class="stat-box">
           <h1>10+</h1>
           <p>Projects</p>
         </div>
-
         <div class="stat-box">
           <h1>100%</h1>
           <p>Creative</p>
         </div>
-
         <div class="stat-box">
           <h1>24/7</h1>
           <p>Learning</p>
         </div>
-
       </div>
-
     </div>
-
   </section>
 
   <!-- ================= SKILLS ================= -->
-
-  <section id="skills" class="glass reveal section">
-
-    <h2 class="section-title reveal-text">Skills</h2>
-
+  <section id="skills" class="glass section">
+    <div class="section-tag">/ SKILLS</div>
+    <h2 class="section-title">My <span>Skills</span></h2>
     <div class="skills-grid" id="skillsGrid"></div>
-
   </section>
 
   <!-- ================= PROJECTS ================= -->
-
-  <section id="projects" class="glass reveal section">
-
-    <h2 class="section-title reveal-text">Projects</h2>
-
+  <section id="projects" class="glass section">
+    <div class="section-tag">/ PROJECTS</div>
+    <h2 class="section-title">My <span>Projects</span></h2>
     <div class="project-container">
 
-      <div class="project-card">
+      <div class="project-card" data-num="01">
         <h3>Modern Portfolio</h3>
         <p>Animated portfolio website with glassmorphism UI.</p>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-num="02">
         <h3>AI Chat UI</h3>
         <p>Interactive chatbot interface with modern design.</p>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" data-num="03">
         <h3>Landing Page</h3>
         <p>Responsive modern landing page using animations.</p>
       </div>
 
     </div>
-
   </section>
 
-  <!-- ================= APPOINTMENT SECTION ================= -->
-
-<section id="appointment" class="glass reveal section">
-
-  <h2 class="section-title reveal-text">
-    Book Appointment
-  </h2>
-
-  <!-- OPEN BUTTON -->
-
-  <button class="open-payment-btn" onclick="openPayment()">
-    Book Appointment
-  </button>
-
-</section>
-
-
-<!-- ================= PAYMENT MODAL ================= -->
-
-<div class="payment-modal" id="paymentModal">
-
-  <div class="payment-container">
-
-    <!-- CLOSE -->
-
-    <span class="close-btn" onclick="closePayment()">
-      ✕
-    </span>
-
-    <h2>
-      Complete Payment
-    </h2>
-
-    <p class="payment-text">
-      Pay ₹50 to confirm your appointment
-    </p>
-
-    <!-- QR -->
-
-    <img src="qr.jpeg" class="qr-image">
-
-    <!-- PAY BUTTON -->
-
-    <button class="paid-btn" onclick="showUTR()">
-      I Have Paid
+  <!-- ================= APPOINTMENT ================= -->
+  <section id="appointment" class="glass reveal section">
+    <div class="section-tag">/ APPOINTMENT</div>
+    <h2 class="section-title">Book <span>Appointment</span></h2>
+    <p class="appt-sub">Pay ₹50 to confirm your appointment slot with me.</p>
+    <button class="open-payment-btn" onclick="openPayment()">
+      <i class="ri-calendar-check-line"></i> Book Now
     </button>
+  </section>
 
-    <!-- UTR -->
-
-    <div class="utr-area" id="utrArea">
-
-      <input
-        type="text"
-        id="utrInput"
-        placeholder="Enter UTR Number">
-
-      <button onclick="verifyPayment()" class="verify-btn">
-        Verify Payment
-      </button>
-
+  <!-- ================= PAYMENT MODAL ================= -->
+  <div class="payment-modal" id="paymentModal">
+    <div class="payment-container">
+      <span class="close-btn" onclick="closePayment()"><i class="ri-close-line"></i></span>
+      <div class="modal-icon"><i class="ri-secure-payment-line"></i></div>
+      <h2>Complete Payment</h2>
+      <p class="payment-text">Pay <strong>₹50</strong> to confirm your appointment</p>
+      <img src="qr.jpeg" class="qr-image" alt="QR Code" />
+      <button class="paid-btn" onclick="showUTR()"><i class="ri-check-line"></i> I Have Paid</button>
+      <div class="utr-area" id="utrArea">
+        <input type="text" id="utrInput" placeholder="Enter UTR / Transaction ID" />
+        <button onclick="verifyPayment()" class="verify-btn"><i class="ri-shield-check-line"></i> Verify Payment</button>
+      </div>
     </div>
-
   </div>
 
-</div>
-
-</section>
-
   <!-- ================= HIRE ================= -->
-
-  <section id="hire" class="glass reveal section">
-
-    <h2 class="section-title reveal-text">Hire Me</h2>
-
-    <p class="hire-text">
-      Available for freelance frontend development.
-    </p>
-
+  <section id="hire" class="glass reveal section hire-section">
+    <div class="section-tag">/ HIRE ME</div>
+    <h2 class="section-title">Let's Work <span>Together</span></h2>
+    <p class="hire-text">Available for freelance frontend development.</p>
     <button class="hire-btn" onclick="showEmail()">
-      Hire Me Now
+      Hire Me Now <i class="ri-arrow-right-up-line"></i>
     </button>
-
     <div class="email-box" id="emailBox">
-
       <p>Click below 👇</p>
-
-      <a href="mailto:officialshivamchoudhary2009@gmail.com">
-        officialshivamchoudhary2009@gmail.com
-      </a>
-
+      <a href="mailto:officialshivamchoudhary2009@gmail.com">officialshivamchoudhary2009@gmail.com</a>
     </div>
-
   </section>
 
   <!-- ================= CONTACT ================= -->
-
   <section id="contact" class="glass reveal section">
-
-    <h2 class="section-title reveal-text">Contact</h2>
-
+    <div class="section-tag">/ CONTACT</div>
+    <h2 class="section-title">Get In <span>Touch</span></h2>
     <div class="contact-container">
-
       <div class="contact-card">
-
         <i class="ri-mail-fill"></i>
-
         <h3>Email</h3>
-
-        <a href="mailto:officialshivamchoudhary2009@gmail.com">
-          officialshivamchoudhary2009@gmail.com
-        </a>
-
+        <a href="mailto:officialshivamchoudhary2009@gmail.com">officialshivamchoudhary2009@gmail.com</a>
       </div>
-
       <div class="contact-card">
-
         <i class="ri-phone-fill"></i>
-
         <h3>Phone</h3>
-
         <p>94xxxxxxx4</p>
-
       </div>
-
     </div>
-
   </section>
 
   <!-- ================= FOOTER ================= -->
-
   <footer>
-    <p>© 2026 Shivam Choudhary | All Rights Reserved</p>
+    <div class="footer-inner">
+      <div class="footer-logo">Shivam<span>.</span></div>
+      <p>© 2026 Shivam Choudhary | All Rights Reserved</p>
+      <div class="footer-socials">
+        <a href="https://github.com/" target="_blank"><i class="ri-github-fill"></i></a>
+        <a href="https://www.instagram.com/svmmmk__" target="_blank"><i class="ri-instagram-line"></i></a>
+        <a href="https://linkedin.com/" target="_blank"><i class="ri-linkedin-box-fill"></i></a>
+        <a href="https://t.me/shivamsera" target="_blank"><i class="ri-telegram-fill"></i></a>
+      </div>
+    </div>
   </footer>
 
-  <!-- ================= JS ================= -->
-
-  <script src="script.js"></script>
-
-  <!-- SUCCESS POPUP -->
-
-<div class="success-popup" id="successPopup">
-
-  <div class="success-card">
-
-    <div class="success-icon">
-      ✓
+  <!-- ================= SUCCESS POPUP ================= -->
+  <div class="success-popup" id="successPopup">
+    <div class="success-card">
+      <div class="success-icon"><i class="ri-check-line"></i></div>
+      <h1>Payment Successful</h1>
+      <p>Your appointment payment has been verified successfully.</p>
+      <button onclick="goWhatsApp()" class="success-btn">
+        <i class="ri-whatsapp-line"></i> Send On WhatsApp
+      </button>
     </div>
-
-    <h1>
-      Payment Successful
-    </h1>
-
-    <p>
-      Your appointment payment has been verified successfully.
-    </p>
-
-    <button onclick="goWhatsApp()" class="success-btn">
-      Send On WhatsApp
-    </button>
-
   </div>
 
-</div>
+
+  <script src="script.js"></script>
 
 </body>
 
