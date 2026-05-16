@@ -232,6 +232,11 @@ function verifyPayment() {
   savedUTR = utr;
   closePayment();
 
+  // 🔥 ADD SOUND HERE
+  const sound = document.getElementById("successSound");
+  sound.currentTime = 0;
+  sound.play();
+
   setTimeout(() => {
     document.getElementById("successPopup").classList.add("show");
   }, 300);
