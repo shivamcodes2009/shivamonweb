@@ -1,346 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- CONFETTI -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-<!-- LOTTIE -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shivam | Modern Portfolio</title>
+  <title>Shivam Choudhary — Frontend Developer</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- ================= LOADER ================= -->
-  <div class="loader" id="loader">
+  <!-- ═══════════════════════════════ LOADER ═══════════════════════════════ -->
+  <div id="loader">
     <div class="loader-inner">
-      <svg class="loader-svg" viewBox="0 0 300 70">
-        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" class="loader-svg-text">SHIVAM</text>
-      </svg>
-      <div class="loader-bar-wrap">
-        <div class="loader-bar-fill" id="loaderFill"></div>
-      </div>
-      <p class="loader-percent" id="loaderPercent">0%</p>
+      <span class="loader-text">SC</span>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
     </div>
   </div>
 
-  <!-- ================= NAVBAR ================= -->
-  <nav class="navbar" id="navbar">
-    <div class="logo">Shivam<span>.</span></div>
-    <ul class="nav-links">
-      <li><a href="#hero" class="nav-link active">Home</a></li>
-      <li><a href="#about" class="nav-link">About</a></li>
-      <li><a href="#skills" class="nav-link">Skills</a></li>
-      <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#appointment" class="nav-link">Appointment</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
-      <li><a href="mailto:officialshivamchoudhary2009@gmail.com" class="nav-hire">Hire Me</a></li>
-    </ul>
-    <button class="menu-btn" id="menuBtn"><i class="ri-menu-3-line"></i></button>
+  <!-- ══════════════════════════ CANVAS PARTICLES ══════════════════════════ -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- ═══════════════════════════ CUSTOM CURSOR ════════════════════════════ -->
+  <div id="cursor"></div>
+  <div id="cursor-follower"></div>
+
+  <!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-logo">Shivam<span>.</span></div>
+
+    <div class="nav-right">
+      <!-- Social Icons -->
+      <a href="https://github.com/" target="_blank" class="nav-social" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.55v-1.93c-3.2.69-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11.1 11.1 0 0 1 2.89-.39c.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.62 1.58.23 2.75.11 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.07.78 2.15v3.19c0 .31.21.66.8.55C20.21 21.4 23.5 17.09 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/svmmmk__" target="_blank" class="nav-social" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://t.me/shivamsera" target="_blank" class="nav-social" aria-label="Telegram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      </a>
+
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
-  <!-- ================= MOBILE MENU ================= -->
+  <!-- ═══════════════════════════ MOBILE MENU ═══════════════════════════════ -->
   <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-close" id="mobileClose"><i class="ri-close-line"></i></button>
-    <ul>
-      <li><a href="#hero" class="mob-link">Home</a></li>
-      <li><a href="#about" class="mob-link">About</a></li>
-      <li><a href="#skills" class="mob-link">Skills</a></li>
-      <li><a href="#projects" class="mob-link">Projects</a></li>
-      <li><a href="#appointment" class="mob-link">Appointment</a></li>
-      <li><a href="#contact" class="mob-link">Contact</a></li>
-      <li><a href="mailto:officialshivamchoudhary2009@gmail.com" class="mob-link mob-hire">Hire Me</a></li>
-    </ul>
+    <button class="menu-close" id="menuClose">✕</button>
+    <nav class="mobile-nav">
+      <a href="#home" class="menu-link" data-close>Home</a>
+      <a href="#about" class="menu-link" data-close>About</a>
+      <a href="#skills" class="menu-link" data-close>Skills</a>
+      <a href="#projects" class="menu-link" data-close>Projects</a>
+      <a href="#appointment" class="menu-link" data-close>Appointment</a>
+      <a href="#contact" class="menu-link" data-close>Contact</a>
+      <a href="mailto:officialshivamchoudhary2009@gmail.com" class="menu-link hire-link" data-close>Hire Me</a>
+    </nav>
+    <div class="menu-footer">
+      <a href="https://github.com/" target="_blank">GitHub</a>
+      <a href="https://www.instagram.com/svmmmk__" target="_blank">Instagram</a>
+      <a href="https://t.me/shivamsera" target="_blank">Telegram</a>
+    </div>
   </div>
+  <div class="menu-overlay" id="menuOverlay"></div>
 
-  <!-- ================= HERO ================= -->
-  <section class="hero" id="hero">
-    <div class="hero-bg-grid"></div>
-    <div class="hero-orb orb1"></div>
-    <div class="hero-orb orb2"></div>
+  <!-- ═══════════════════════════════ MAIN ════════════════════════════════ -->
+  <main>
 
-    <div class="hero-left">
-      <div class="badge"><span class="badge-dot"></span> Available for Freelance</div>
-      <p class="intro">HELLO I'M</p>
-      <h1>Shivam <span>Choudhary</span></h1>
-      <h2 id="role">Frontend Developer</h2>
-      <p class="typing-text" id="typing"></p>
-      <div class="hero-buttons">
-        <a href="mailto:officialshivamchoudhary2009@gmail.com">
-          <button class="primary-btn"><span>Hire Me</span> <i class="ri-arrow-right-up-line"></i></button>
-        </a>
-        <a href="shivam cv.pdf" download>
-          <button class="secondary-btn"><i class="ri-download-2-line"></i> <span>Download CV</span></button>
-        </a>
-      </div>
-      <div class="social-icons">
-        <a href="https://github.com/" target="_blank"><i class="ri-github-fill"></i></a>
-        <a href="https://www.instagram.com/svmmmk__?igsh=MTR1NjRxNmg2YWQ2eQ==" target="_blank"><i class="ri-instagram-line"></i></a>
-        <a href="https://linkedin.com/" target="_blank"><i class="ri-linkedin-box-fill"></i></a>
-        <a href="https://t.me/shivamsera" target="_blank"><i class="ri-telegram-fill"></i></a>
-      </div>
-    </div>
-
-    <div class="hero-right">
-      <div class="image-wrap">
-        <div class="image-ring ring1"></div>
-        <div class="image-ring ring2"></div>
-        <div class="image-circle">
-          <img src="profile two.avif" alt="Shivam Choudhary" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= ABOUT ================= -->
-  <section id="about" class="glass reveal section">
-    <div class="section-tag">/ ABOUT ME</div>
-    <h2 class="section-title">About <span>Me</span></h2>
-    <div class="about-content">
-      <div class="about-card">
-        <h3>Who Am I?</h3>
-        <p>I'm Shivam Choudhary, a passionate frontend developer and creative web designer who loves building modern, interactive, and visually impressive websites.</p>
-        <p>I enjoy transforming ideas into real digital experiences using HTML, CSS, JavaScript, animations, and modern UI techniques.</p>
-        <p>Along with web development, I am also a professional video editor experienced in CapCut, VN, Alight Motion, and Adobe After Effects. I use modern AI tools to enhance editing quality, create cinematic visuals, and deliver highly engaging digital content for brands, creators, and social media platforms.</p>
-        <p>I also have strong knowledge of content creation and social media presentation. I understand modern trends, audience engagement, creative storytelling, and branding techniques that help content stand out professionally across multiple platforms.</p>
-      </div>
-      <div class="stats">
-        <div class="stat-box">
-          <h1>10+</h1>
-          <p>Projects</p>
-        </div>
-        <div class="stat-box">
-          <h1>100%</h1>
-          <p>Creative</p>
-        </div>
-        <div class="stat-box">
-          <h1>24/7</h1>
-          <p>Learning</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= SKILLS ================= -->
-  <section id="skills" class="glass section">
-    <div class="section-tag">/ SKILLS</div>
-    <h2 class="section-title">My <span>Skills</span></h2>
-    <div class="skills-grid" id="skillsGrid"></div>
-  </section>
-
-  <!-- ================= PROJECTS ================= -->
-  <section id="projects" class="glass section">
-    <div class="section-tag">/ PROJECTS</div>
-    <h2 class="section-title">My <span>Projects</span></h2>
-    <div class="project-container">
-
-      <div class="project-card" data-num="01">
-        <h3>Modern Portfolio</h3>
-        <p>Animated portfolio website with glassmorphism UI.</p>
-      </div>
-
-      <div class="project-card" data-num="02">
-        <h3>AI Chat UI</h3>
-        <p>Interactive chatbot interface with modern design.</p>
-      </div>
-
-      <div class="project-card" data-num="03">
-        <h3>Landing Page</h3>
-        <p>Responsive modern landing page using animations.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= APPOINTMENT ================= -->
-  <section id="appointment" class="glass reveal section">
-    <div class="section-tag">/ APPOINTMENT</div>
-    <h2 class="section-title">Book <span>Appointment</span></h2>
-    <p class="appt-sub">Pay ₹50 to confirm your appointment slot with me.</p>
-    <button class="open-payment-btn" onclick="openPayment()">
-      <i class="ri-calendar-check-line"></i> Book Now
-    </button>
-  </section>
-
-  <!-- ================= PAYMENT MODAL ================= -->
-<div class="payment-modal" id="paymentModal">
-  <div class="payment-container">
-
-    <span class="close-btn" onclick="closePayment()">
-      <i class="ri-close-line"></i>
-    </span>
-
-    <div class="modal-icon">
-      <i class="ri-secure-payment-line"></i>
-    </div>
-
-    <h2>Complete Payment</h2>
-
-    <p class="payment-text">
-      Pay <strong>₹50</strong> to confirm your appointment
-    </p>
-
-    <!-- QR BOX -->
-    <div class="qr-wrapper">
-      <img src="qr.jpeg" class="qr-image" alt="QR Code" />
-
-      <!-- QR SCAN LINE -->
-      <div class="scan-line"></div>
-    </div>
-
-    <!-- SECURITY BADGE -->
-    <div class="secure-badge">
-      <i class="ri-shield-check-line"></i>
-      Secure UPI Payment
-    </div>
-
-    <button class="paid-btn" id="paidBtn" onclick="showUTR()">
-      <i class="ri-check-line"></i>
-      I Have Paid
-    </button>
-
-    <!-- UTR -->
-    <div class="utr-area" id="utrArea">
-
-      <input
-        type="text"
-        id="utrInput"
-        placeholder="Enter UTR / Transaction ID"
-        maxlength="12"
-      />
-
-      <p class="utr-note">
-        Example: 123456789012
-      </p>
-
-      <button onclick="verifyPayment()" class="verify-btn" id="verifyBtn">
-        <i class="ri-shield-check-line"></i>
-        Verify Payment
-      </button>
-
-      <!-- BANK LOADER -->
-      <div class="bank-loader" id="bankLoader">
-
-        <div class="bank-loader-top">
-          <div class="bank-loader-circle"></div>
+    <!-- ── HERO ── -->
+    <section id="home" class="hero-section">
+      <div class="hero-content">
+        <div class="hero-photo-wrap">
+          <div class="hero-photo-ring"></div>
+          <div class="hero-photo">
+            <!-- Profile photo placeholder -->
+            <img src="profile two.avif" alt="Shivam" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="38" r="20" fill="rgba(0,255,255,0.15)" stroke="rgba(0,255,255,0.4)" stroke-width="1.5"/>
+                <ellipse cx="50" cy="82" rx="30" ry="18" fill="rgba(0,255,255,0.1)" stroke="rgba(0,255,255,0.3)" stroke-width="1.5"/>
+                <text x="50" y="44" text-anchor="middle" fill="rgba(0,255,255,0.8)" font-size="14" font-family="Syne" font-weight="700">SC</text>
+              </svg>
+            </div>
+          </div>
         </div>
 
-        <h3>Verifying Payment...</h3>
+        <div class="hero-text">
+          <p class="hero-greeting">Hello, I'm</p>
+          <h1 class="hero-name">Shivam<br/>Choudhary</h1>
+          <div class="hero-role">
+            <span class="role-text" id="roleText">Frontend Developer</span>
+            <span class="role-cursor">|</span>
+          </div>
+          <div class="hero-btns">
+            <a href="mailto:officialshivamchoudhary2009@gmail.com" class="btn btn-primary">
+              <span>Hire Me</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#" class="btn btn-outline" id="downloadCV">
+              <span>Download CV</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
 
-        <p>
-          Securely checking transaction with banking server
-        </p>
+      <div class="hero-scroll-hint">
+        <div class="scroll-dot"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
 
-        <div class="bank-progress">
-          <div class="bank-progress-fill" id="bankProgressFill"></div>
+    <!-- ── ABOUT ── -->
+    <section id="about" class="section about-section reveal">
+      <div class="section-label">01 / About</div>
+      <h2 class="section-title">Who I Am?</h2>
+      <div class="about-grid">
+        <div class="about-photo-col">
+          <div class="about-photo-frame">
+            <div class="about-photo-inner">
+              <svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%">
+                <rect width="200" height="220" rx="16" fill="rgba(0,255,255,0.04)" stroke="rgba(0,255,255,0.2)" stroke-width="1"/>
+                <circle cx="100" cy="85" r="42" fill="rgba(0,255,255,0.08)" stroke="rgba(0,255,255,0.3)" stroke-width="1.5"/>
+                <ellipse cx="100" cy="170" rx="58" ry="36" fill="rgba(0,255,255,0.05)" stroke="rgba(0,255,255,0.2)" stroke-width="1.5"/>
+                <text x="100" y="92" text-anchor="middle" fill="rgba(0,255,255,0.7)" font-size="28" font-family="Syne" font-weight="800">SC</text>
+                <text x="100" y="195" text-anchor="middle" fill="rgba(0,255,255,0.4)" font-size="10" font-family="DM Sans">Shivam Choudhary</text>
+              </svg>
+            </div>
+            <div class="about-badge">
+              <span class="badge-num">2+</span>
+              <span class="badge-txt">Years<br/>Experience</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-text-col">
+          <p class="about-para">
+            I am a passionate student and <strong>Frontend Developer</strong> with strong expertise in HTML, CSS, JavaScript, and modern UI/UX design. I specialize in creating beautiful, responsive, and user-centric websites that leave a lasting impression.
+          </p>
+          <p class="about-para">
+            Proficient in video editing with <strong>VN Editor, Alight Motion, After Effects, CapCut,</strong> and <strong>Canva</strong>. I actively use AI tools to enhance frontend development and content creation workflows, making every project smarter and more efficient.
+          </p>
+          <p class="about-para">
+            A dedicated <strong>content creator</strong> who loves turning ideas into visually stunning digital experiences — from a pixel-perfect landing page to a cinematic video edit. Every detail matters to me.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item"><span class="stat-num">12+</span><span class="stat-lbl">Skills</span></div>
+            <div class="stat-item"><span class="stat-num">4+</span><span class="stat-lbl">Projects</span></div>
+            <div class="stat-item"><span class="stat-num">100%</span><span class="stat-lbl">Passion</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SKILLS ── -->
+    <section id="skills" class="section skills-section reveal">
+      <div class="section-label">02 / Skills</div>
+      <h2 class="section-title">My Skills</h2>
+      <div class="skills-grid">
+
+        <div class="skill-card" data-level="95">
+          <div class="skill-icon">⚡</div>
+          <div class="skill-info">
+            <span class="skill-name">HTML5</span>
+            <div class="skill-bar"><div class="skill-fill" data-w="95"></div></div>
+          </div>
+          <span class="skill-pct">95%</span>
         </div>
 
-        <div class="bank-steps">
-          <span id="step1">Checking UPI</span>
-          <span id="step2">Verifying Bank</span>
-          <span id="step3">Confirming Payment</span>
+        <div class="skill-card" data-level="90">
+          <div class="skill-icon">🎨</div>
+          <div class="skill-info">
+            <span class="skill-name">CSS3 & Animations</span>
+            <div class="skill-bar"><div class="skill-fill" data-w="90"></div></div>
+          </div>
+          <span class="skill-pct">90%</span>
+        </div>
+
+        <div class="skill-card" data-level="85">
+          <div class="skill-icon">🔧</div>
+          <div class="skill-info">
+            <span class="skill-name">JavaScript (ES6+)</span>
+            <div class="skill-bar"><div class="skill-fill" data-w="85"></div></div>
+          </div>
+          <span class="skill-pct">85%</span>
+        </div>
+
+        <div class="skill-card" data-level="88">
+          <div class="skill-icon">📱</div>
+          <div class="skill-info">
+            <span class="skill-name">Responsive Design</span>
+            <div class="skill-bar"><div class="skill-fill" data-w="88"></div></div>
+          </div>
+          <span class="skill-pct">88%</span>
+        </div>
+
+        <div class="skill-card" data-level="80">
+          <div class="skill-icon">🖌️</div>
+          <div class="skill-info">
+            <span class="skill-name">UI/UX Design</span>
+            <div class="skill-bar"><div class="skill-fill" data-w="80"></div></div>
+          </div>
+          <span class="skill-pct">80%</span>
+        </div>
+
+        <div class="skill-card" data-level="70">
+          <div class="skill-icon">⚛️</div>
+          <div class="skill-info">
+            <span class="skill-name">React Basics</span>
+            <div class="skill-bar"><div class="skill-fill" data-w="70"></div></div>
+          </div>
+          <span class="skill-pct">70%</span>
+        </div>
+
+        <div class="skill-card" data-level="92">
+          <div class="skill-icon">🎬</div>
+          <div class="skill-info">
+            <span class="skill-name">Video Editing</span>
+            <div class="skill-bar"><div class="skill-fill" data-w="92"></div></div>
+          </div>
+          <span class="skill-pct">92%</span>
+        </div>
+
+        <div class="skill-card" data-level="85">
+          <div class="skill-icon">✍️</div>
+          <div class="skill-info">
+            <span class="skill-name">Content Creation</span>
+            <div class="skill-bar"><div class="skill-fill" data-w="85"></div></div>
+          </div>
+          <span class="skill-pct">85%</span>
+        </div>
+
+        <div class="skill-card" data-level="78">
+          <div class="skill-icon">🤖</div>
+          <div class="skill-info">
+            <span class="skill-name">AI Tools Integration</span>
+            <div class="skill-bar"><div class="skill-fill" data-w="78"></div></div>
+          </div>
+          <span class="skill-pct">78%</span>
+        </div>
+
+        <div class="skill-card" data-level="75">
+          <div class="skill-icon">🖼️</div>
+          <div class="skill-info">
+            <span class="skill-name">Figma & Canva</span>
+            <div class="skill-bar"><div class="skill-fill" data-w="75"></div></div>
+          </div>
+          <span class="skill-pct">75%</span>
+        </div>
+
+        <div class="skill-card" data-level="80">
+          <div class="skill-icon">🐙</div>
+          <div class="skill-info">
+            <span class="skill-name">Git & GitHub</span>
+            <div class="skill-bar"><div class="skill-fill" data-w="80"></div></div>
+          </div>
+          <span class="skill-pct">80%</span>
+        </div>
+
+        <div class="skill-card" data-level="72">
+          <div class="skill-icon">⚡</div>
+          <div class="skill-info">
+            <span class="skill-name">Performance Optimization</span>
+            <div class="skill-bar"><div class="skill-fill" data-w="72"></div></div>
+          </div>
+          <span class="skill-pct">72%</span>
         </div>
 
       </div>
+    </section>
 
-    </div>
+    <!-- ── PROJECTS ── -->
+    <section id="projects" class="section projects-section reveal">
+      <div class="section-label">03 / Projects</div>
+      <h2 class="section-title">My Projects</h2>
+      <div class="projects-grid">
 
-  </div>
-</div>
+        <div class="project-card">
+          <div class="project-img">
+            <div class="project-img-inner proj1">
+              <span>🌐</span>
+            </div>
+            <div class="project-overlay">
+              <a href="#" class="btn-view">View Project →</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Portfolio</span>
+            <h3 class="project-title">Modern Portfolio</h3>
+            <p class="project-desc">A premium personal portfolio website with advanced animations, dark mode, and smooth UX — crafted pixel by pixel.</p>
+          </div>
+        </div>
 
-  <!-- ================= HIRE ================= -->
-  <section id="hire" class="glass reveal section hire-section">
-    <div class="section-tag">/ HIRE ME</div>
-    <h2 class="section-title">Let's Work <span>Together</span></h2>
-    <p class="hire-text">Available for freelance frontend development.</p>
-    <button class="hire-btn" onclick="showEmail()">
-      Hire Me Now <i class="ri-arrow-right-up-line"></i>
-    </button>
-    <div class="email-box" id="emailBox">
-      <p>Click below 👇</p>
-      <a href="mailto:officialshivamchoudhary2009@gmail.com">officialshivamchoudhary2009@gmail.com</a>
-    </div>
-  </section>
+        <div class="project-card">
+          <div class="project-img">
+            <div class="project-img-inner proj2">
+              <span>🤖</span>
+            </div>
+            <div class="project-overlay">
+              <a href="#" class="btn-view">View Project →</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">AI / Chat</span>
+            <h3 class="project-title">AI Chat Bot</h3>
+            <p class="project-desc">Intelligent AI-powered chatbot with natural conversation flow, smart responses, and a slick modern interface.</p>
+          </div>
+        </div>
 
-  <!-- ================= CONTACT ================= -->
-  <section id="contact" class="glass reveal section">
-    <div class="section-tag">/ CONTACT</div>
-    <h2 class="section-title">Get In <span>Touch</span></h2>
-    <div class="contact-container">
-      <div class="contact-card">
-        <i class="ri-mail-fill"></i>
-        <h3>Email</h3>
-        <a href="mailto:officialshivamchoudhary2009@gmail.com">officialshivamchoudhary2009@gmail.com</a>
+        <div class="project-card">
+          <div class="project-img">
+            <div class="project-img-inner proj3">
+              <span>🛒</span>
+            </div>
+            <div class="project-overlay">
+              <a href="#" class="btn-view">View Project →</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">E-Commerce</span>
+            <h3 class="project-title">Local Super Store</h3>
+            <p class="project-desc">Full-featured e-commerce website for a local supermarket with cart, product filtering, and responsive design.</p>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img">
+            <div class="project-img-inner proj4">
+              <span>🎮</span>
+            </div>
+            <div class="project-overlay">
+              <a href="#" class="btn-view">View Project →</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Game / Canvas</span>
+            <h3 class="project-title">Endless Runner Game</h3>
+            <p class="project-desc">An exciting subway-surfer style endless runner built with HTML5 Canvas and JS — smooth controls, scoring system included.</p>
+          </div>
+        </div>
+
       </div>
-      <div class="contact-card">
-        <i class="ri-phone-fill"></i>
-        <h3>Phone</h3>
-        <p>94xxxxxxx4</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ================= FOOTER ================= -->
+    <!-- ── APPOINTMENT ── -->
+    <section id="appointment" class="section appointment-section reveal">
+      <div class="section-label">04 / Booking</div>
+      <h2 class="section-title">Fix an Appointment</h2>
+      <p class="appt-sub">Scan the QR code below to pay, then click "I Have Paid" to confirm your booking.</p>
+
+      <div class="appt-card glass">
+        <div class="qr-wrap">
+          <!-- QR Code placeholder -->
+          <div class="qr-box" id="qrCode">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="180" height="180">
+              <!-- Outer border -->
+              <rect width="200" height="200" rx="12" fill="rgba(0,0,0,0.5)" stroke="rgba(0,255,255,0.4)" stroke-width="2"/>
+              <!-- Top-left finder -->
+              <rect x="20" y="20" width="50" height="50" rx="4" fill="none" stroke="rgba(0,255,255,0.8)" stroke-width="3"/>
+              <rect x="30" y="30" width="30" height="30" rx="2" fill="rgba(0,255,255,0.5)"/>
+              <!-- Top-right finder -->
+              <rect x="130" y="20" width="50" height="50" rx="4" fill="none" stroke="rgba(0,255,255,0.8)" stroke-width="3"/>
+              <rect x="140" y="30" width="30" height="30" rx="2" fill="rgba(0,255,255,0.5)"/>
+              <!-- Bottom-left finder -->
+              <rect x="20" y="130" width="50" height="50" rx="4" fill="none" stroke="rgba(0,255,255,0.8)" stroke-width="3"/>
+              <rect x="30" y="140" width="30" height="30" rx="2" fill="rgba(0,255,255,0.5)"/>
+              <!-- Data dots (simulated) -->
+              <g fill="rgba(0,255,255,0.6)">
+                <rect x="90" y="20" width="8" height="8"/><rect x="105" y="20" width="8" height="8"/>
+                <rect x="90" y="35" width="8" height="8"/><rect x="120" y="35" width="8" height="8"/>
+                <rect x="90" y="50" width="8" height="8"/><rect x="105" y="50" width="8" height="8"/>
+                <rect x="90" y="65" width="8" height="8"/><rect x="20" y="90" width="8" height="8"/>
+                <rect x="35" y="90" width="8" height="8"/><rect x="50" y="90" width="8" height="8"/>
+                <rect x="65" y="90" width="8" height="8"/><rect x="80" y="90" width="8" height="8"/>
+                <rect x="95" y="90" width="8" height="8"/><rect x="110" y="90" width="8" height="8"/>
+                <rect x="125" y="90" width="8" height="8"/><rect x="140" y="90" width="8" height="8"/>
+                <rect x="155" y="90" width="8" height="8"/><rect x="170" y="90" width="8" height="8"/>
+                <rect x="20" y="105" width="8" height="8"/><rect x="50" y="105" width="8" height="8"/>
+                <rect x="80" y="105" width="8" height="8"/><rect x="110" y="105" width="8" height="8"/>
+                <rect x="140" y="105" width="8" height="8"/><rect x="170" y="105" width="8" height="8"/>
+                <rect x="35" y="120" width="8" height="8"/><rect x="65" y="120" width="8" height="8"/>
+                <rect x="95" y="120" width="8" height="8"/><rect x="125" y="120" width="8" height="8"/>
+                <rect x="155" y="120" width="8" height="8"/><rect x="90" y="140" width="8" height="8"/>
+                <rect x="105" y="140" width="8" height="8"/><rect x="120" y="140" width="8" height="8"/>
+                <rect x="135" y="140" width="8" height="8"/><rect x="150" y="140" width="8" height="8"/>
+                <rect x="165" y="140" width="8" height="8"/><rect x="90" y="155" width="8" height="8"/>
+                <rect x="120" y="155" width="8" height="8"/><rect x="150" y="155" width="8" height="8"/>
+                <rect x="90" y="170" width="8" height="8"/><rect x="105" y="170" width="8" height="8"/>
+                <rect x="135" y="170" width="8" height="8"/><rect x="165" y="170" width="8" height="8"/>
+              </g>
+              <!-- Center label -->
+              <text x="100" y="198" text-anchor="middle" fill="rgba(0,255,255,0.5)" font-size="7" font-family="DM Sans">Scan to Pay</text>
+            </svg>
+          </div>
+          <p class="qr-label">Scan &amp; Pay to Book Slot</p>
+        </div>
+
+        <div class="appt-right">
+          <div class="appt-steps">
+            <div class="step"><span class="step-num">1</span><span>Scan QR &amp; complete payment</span></div>
+            <div class="step"><span class="step-num">2</span><span>Click "I Have Paid" button</span></div>
+            <div class="step"><span class="step-num">3</span><span>Enter your 12-digit UTR number</span></div>
+            <div class="step"><span class="step-num">4</span><span>Verify via WhatsApp &amp; get confirmed!</span></div>
+          </div>
+          <button class="btn btn-primary appt-btn" id="paidBtn">
+            <span>✓ I Have Paid</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section id="contact" class="section contact-section reveal">
+      <div class="section-label">05 / Contact</div>
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-sub">Have a project in mind? Let's build something amazing together.</p>
+
+      <div class="contact-grid">
+        <div class="contact-card glass">
+          <div class="contact-icon">📧</div>
+          <span class="contact-lbl">Email</span>
+          <a href="mailto:officialshivamchoudhary2009@gmail.com" class="contact-val">
+            officialshivamchoudhary2009@gmail.com
+          </a>
+        </div>
+        <div class="contact-card glass">
+          <div class="contact-icon">📞</div>
+          <span class="contact-lbl">Phone</span>
+          <a href="tel:+919430932904" class="contact-val">+91 9430932904</a>
+        </div>
+        <div class="contact-card glass">
+          <div class="contact-icon">📍</div>
+          <span class="contact-lbl">Location</span>
+          <span class="contact-val">Bihar, India</span>
+        </div>
+      </div>
+
+      <div class="contact-socials">
+        <a href="https://github.com/" target="_blank" class="soc-btn">GitHub</a>
+        <a href="https://www.instagram.com/svmmmk__" target="_blank" class="soc-btn">Instagram</a>
+        <a href="https://t.me/shivamsera" target="_blank" class="soc-btn">Telegram</a>
+        <a href="mailto:officialshivamchoudhary2009@gmail.com" class="soc-btn">Email</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
   <footer>
     <div class="footer-inner">
-      <div class="footer-logo">Shivam<span>.</span></div>
-      <p>© 2026 Shivam Choudhary | All Rights Reserved</p>
-      <div class="footer-socials">
-        <a href="https://github.com/" target="_blank"><i class="ri-github-fill"></i></a>
-        <a href="https://www.instagram.com/svmmmk__" target="_blank"><i class="ri-instagram-line"></i></a>
-        <a href="https://linkedin.com/" target="_blank"><i class="ri-linkedin-box-fill"></i></a>
-        <a href="https://t.me/shivamsera" target="_blank"><i class="ri-telegram-fill"></i></a>
-      </div>
+      <span class="footer-logo">Shivam<span>.</span></span>
+      <p>Made with <span class="heart">♥</span> &amp; passion by Shivam Choudhary</p>
+      <p class="footer-copy">© 2025 All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- ================= SUCCESS POPUP ================= -->
-<audio id="successSound" src="success.mp3" preload="auto"></audio>
-
-<div class="success-popup" id="successPopup">
-
-  <div class="success-card">
-
-    <div class="success-icon">
-      <i class="ri-check-line"></i>
+  <!-- ════════════════════════ UTR MODAL ═══════════════════════════ -->
+  <div class="modal-overlay" id="utrModal">
+    <div class="modal glass">
+      <button class="modal-close" id="modalClose">✕</button>
+      <h3 class="modal-title">Enter UTR Number</h3>
+      <p class="modal-sub">Enter your 12-digit UTR number to verify payment</p>
+      <input type="text" class="utr-input" id="utrInput" placeholder="e.g. 123456789012" maxlength="12" inputmode="numeric" />
+      <p class="utr-error" id="utrError"></p>
+      <button class="btn btn-primary" id="verifyBtn" style="width:100%;justify-content:center;">Verify Payment</button>
     </div>
-
-    <h1>PAYMENT SUCCESSFUL</h1>
-
-    <p>
-      Your appointment payment has been verified successfully.
-    </p>
-
-    <div class="success-details">
-      <div>
-        <span>Status</span>
-        <strong>Confirmed</strong>
-      </div>
-
-      <div>
-        <span>Amount</span>
-        <strong>₹50</strong>
-      </div>
-    </div>
-
-    <button onclick="goWhatsApp()" class="success-btn">
-      <i class="ri-whatsapp-line"></i>
-      Send Confirmation On WhatsApp
-    </button>
-
   </div>
 
-</div>
+  <!-- ═══════════════════════ SUCCESS MODAL ═══════════════════════ -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal success-modal glass">
+      <div class="success-anim">
+        <svg viewBox="0 0 80 80" class="check-svg"><circle cx="40" cy="40" r="38" fill="none" stroke="rgba(0,255,180,0.8)" stroke-width="3" class="check-ring"/><path d="M22 40 L34 52 L58 28" fill="none" stroke="rgba(0,255,180,1)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="check-path"/></svg>
+      </div>
+      <h3 class="success-title">Payment Verified! 🎉</h3>
+      <p class="success-sub">Your appointment slot has been booked. Please verify via WhatsApp to get your confirmed slot time.</p>
+      <button class="btn btn-primary" id="whatsappBtn" style="width:100%;justify-content:center;">
+        <span>Verify via WhatsApp</span>
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      </button>
+    </div>
+  </div>
 
+  <!-- Confetti canvas -->
+  <canvas id="confettiCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none;"></canvas>
 
   <script src="script.js"></script>
-
 </body>
-
 </html>
