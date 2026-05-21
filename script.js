@@ -11,38 +11,7 @@ window.addEventListener("load", () => {
   }, 3200);
 });
 
-/* CUSTOM CURSOR */
 
-const cursor = document.getElementById("cursor");
-const follower = document.getElementById("cursor-follower");
-
-window.addEventListener("mousemove", (e) => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-
-  follower.animate(
-    {
-      left: e.clientX - 15 + "px",
-      top: e.clientY - 15 + "px",
-    },
-    {
-      duration: 250,
-      fill: "forwards",
-    }
-  );
-});
-
-document.querySelectorAll("a,button,.project-card,.skill-card").forEach(el => {
-  el.addEventListener("mouseenter", () => {
-    follower.style.transform = "scale(1.8)";
-    follower.style.borderColor = "#00f5ff";
-  });
-
-  el.addEventListener("mouseleave", () => {
-    follower.style.transform = "scale(1)";
-    follower.style.borderColor = "rgba(255,255,255,.5)";
-  });
-});
 
 /* MOBILE MENU */
 
@@ -406,17 +375,11 @@ document.getElementById("downloadCV").addEventListener("click", (e) => {
 
   e.preventDefault();
 
-  const blob = new Blob(
-    ["Shivam Choudhary CV"],
-    {type:"text/plain"}
-  );
-
-  const url = URL.createObjectURL(blob);
-
   const a = document.createElement("a");
 
-  a.href = url;
-  a.download = "Shivam-CV.txt";
+  a.href = "Shivam-CV.pdf";
+
+  a.download = "shivam cv.pdf";
 
   a.click();
 
