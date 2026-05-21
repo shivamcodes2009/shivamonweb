@@ -377,7 +377,7 @@ document.getElementById("downloadCV").addEventListener("click", (e) => {
 
   const a = document.createElement("a");
 
-  a.href = "Shivam-CV.pdf";
+  a.href = "shivam cv.pdf";
 
   a.download = "shivam cv.pdf";
 
