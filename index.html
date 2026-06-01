@@ -3,36 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shivam Choudhary — Frontend Developer</title>
+  <title>Shivam Choudhary — AI Frontend Engineer</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 </head>
-<body>
+<body data-theme="dark">
 
-  <!-- ═══════════════════════ LOADER ════════════════════════ -->
+  <!-- ══════════════════════ LOADER ══════════════════════ -->
   <div id="loader">
     <div class="loader-inner">
-      <span class="loader-text">SHIVAM.</span>
-      <div class="loader-bar"><div class="loader-fill"></div></div>
-      <span class="loader-sub">Loading Portfolio...</span>
+      <div class="loader-logo">SHIVAM<span class="loader-dot">.</span></div>
+      <div class="loader-bar-wrap"><div class="loader-bar"><div class="loader-fill"></div></div></div>
+      <div class="loader-status"><span class="loader-status-text">Initializing Systems...</span></div>
+      <div class="loader-grid"></div>
     </div>
   </div>
 
-  <!-- ══════════════════ CANVAS PARTICLES ══════════════════ -->
+  <!-- ══════════════════ CUSTOM CURSOR ══════════════════ -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ═══════════════════ CANVAS BG ══════════════════════ -->
   <canvas id="particleCanvas"></canvas>
 
-  
+  <!-- ════════════════ THEME SWITCHER ════════════════════ -->
+  <div class="theme-switcher" id="themeSwitcher">
+    <button class="theme-toggle-btn" id="themeToggleBtn" title="Change Theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+    </button>
+    <div class="theme-panel glass" id="themePanel">
+      <p class="theme-panel-title">Choose Theme</p>
+      <button class="theme-btn active" data-theme="dark" title="Dark Mode">
+        <span class="theme-preview dark-preview"></span> Dark
+      </button>
+      <button class="theme-btn" data-theme="cyberpunk" title="Cyberpunk">
+        <span class="theme-preview cyberpunk-preview"></span> Cyberpunk
+      </button>
+      <button class="theme-btn" data-theme="neon" title="Neon Blue">
+        <span class="theme-preview neon-preview"></span> Neon Blue
+      </button>
+      <button class="theme-btn" data-theme="hacker" title="Purple Hacker">
+        <span class="theme-preview hacker-preview"></span> Hacker
+      </button>
+    </div>
+  </div>
+
   <!-- ══════════════════════ NAVBAR ════════════════════════ -->
   <nav id="navbar">
     <div class="nav-logo">Shivam<span>.</span></div>
     <div class="nav-links-desktop">
       <a href="#home">Home</a>
       <a href="#about">About</a>
-      <a href="#story">My Story</a>
+      <a href="#current">Live Work</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
+      <a href="#story">Journey</a>
+      <a href="#stats">Stats</a>
       <a href="#reviews">Reviews</a>
-      <a href="#appointment">Booking</a>
       <a href="#contact">Contact</a>
     </div>
     <div class="nav-right">
@@ -45,25 +72,24 @@
       <a href="https://t.me/shivamsera" target="_blank" class="nav-social" aria-label="Telegram">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
       </a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <!-- ═════════════════════ MOBILE MENU ═════════════════════ -->
+  <!-- ════════════════════ MOBILE MENU ═══════════════════ -->
   <div class="mobile-menu" id="mobileMenu">
     <button class="menu-close" id="menuClose">✕</button>
     <nav class="mobile-nav">
-      <a href="#home" class="menu-link" data-close>Home</a>
-      <a href="#about" class="menu-link" data-close>About</a>
-      <a href="#story" class="menu-link" data-close>My Story</a>
-      <a href="#skills" class="menu-link" data-close>Skills</a>
-      <a href="#projects" class="menu-link" data-close>Projects</a>
-      <a href="#reviews" class="menu-link" data-close>Reviews</a>
-      <a href="#appointment" class="menu-link" data-close>Booking</a>
-      <a href="#contact" class="menu-link" data-close>Contact</a>
-      <a href="mailto:officialshivamchoudhary2009@gmail.com" class="menu-link hire-link" data-close>Hire Me</a>
+      <a href="#home" data-close>Home</a>
+      <a href="#about" data-close>About</a>
+      <a href="#current" data-close>Live Work</a>
+      <a href="#skills" data-close>Skills</a>
+      <a href="#projects" data-close>Projects</a>
+      <a href="#story" data-close>Journey</a>
+      <a href="#stats" data-close>Stats</a>
+      <a href="#reviews" data-close>Reviews</a>
+      <a href="#contact" data-close>Contact</a>
+      <a href="mailto:officialshivamchoudhary2009@gmail.com" class="hire-link" data-close>Hire Me</a>
     </nav>
     <div class="menu-footer">
       <a href="https://github.com/" target="_blank">GitHub</a>
@@ -73,28 +99,41 @@
   </div>
   <div class="menu-overlay" id="menuOverlay"></div>
 
-  <!-- ══════════════════════ MAIN ══════════════════════════ -->
   <main>
 
-    <!-- ── HERO ── -->
+    <!-- ══════════════════════ HERO ═══════════════════════ -->
     <section id="home" class="hero-section">
       <div class="hero-content">
-        <div class="hero-photo-wrap">
-          <div class="hero-photo-ring"></div>
-          <div class="hero-photo">
-            <img src="profile two.avif" alt="Shivam" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+        <div class="hero-photo-col">
+          <div class="hero-photo-wrap">
+            <div class="hero-photo-ring ring1"></div>
+            <div class="hero-photo-ring ring2"></div>
+            <div class="hero-photo">
+              <img src="profile two.avif" alt="Shivam Choudhary" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <div class="hero-badge-float">
+              <span class="badge-pulse"></span>
+              Available for work ✦
+            </div>
+            <div class="hero-orbit-dot dot1"></div>
+            <div class="hero-orbit-dot dot2"></div>
+            <div class="hero-orbit-dot dot3"></div>
           </div>
-          <div class="hero-badge-float">Available for work ✦</div>
         </div>
 
         <div class="hero-text">
-          <p class="hero-greeting">Hello, I'm</p>
-          <h1 class="hero-name">Shivam<br/>Choudhary</h1>
-          <div class="hero-role">
-            <span class="role-text" id="roleText">Frontend Developer</span>
+          <div class="hero-tag">
+            <span class="tag-line"></span>
+            <span>Hello, I'm</span>
+          </div>
+          <h1 class="hero-name">Shivam<br/><span class="hero-name-accent">Choudhary</span></h1>
+          <div class="hero-role-wrap">
+            <span class="hero-role-prefix">I build </span>
+            <span class="hero-role" id="roleText">Frontend Experiences</span>
             <span class="role-cursor">|</span>
           </div>
-          <p class="hero-tagline">Crafting pixel-perfect digital experiences with code, creativity & passion.</p>
+          <p class="hero-tagline">Crafting pixel-perfect digital experiences with code, creativity & AI-powered workflows. Turning ideas into interactive realities.</p>
+
           <div class="hero-btns">
             <a href="mailto:officialshivamchoudhary2009@gmail.com" class="btn btn-primary">
               <span>Hire Me</span>
@@ -105,22 +144,156 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
             </a>
           </div>
+
           <div class="hero-stats-row">
-            <div class="hs-item"><span class="hs-num">2+</span><span class="hs-lbl">Yrs Exp</span></div>
+            <div class="hs-item">
+              <span class="hs-num" data-count="2">0</span>
+              <span class="hs-lbl">Yrs Exp</span>
+            </div>
             <div class="hs-sep"></div>
-            <div class="hs-item"><span class="hs-num">4+</span><span class="hs-lbl">Projects</span></div>
+            <div class="hs-item">
+              <span class="hs-num" data-count="4">0</span>
+              <span class="hs-lbl">Projects</span>
+            </div>
             <div class="hs-sep"></div>
-            <div class="hs-item"><span class="hs-num">12+</span><span class="hs-lbl">Skills</span></div>
+            <div class="hs-item">
+              <span class="hs-num" data-count="12">0</span>
+              <span class="hs-lbl">Skills</span>
+            </div>
+            <div class="hs-sep"></div>
+            <div class="hs-item">
+              <span class="hs-num">100%</span>
+              <span class="hs-lbl">Passion</span>
+            </div>
+          </div>
+
+          <div class="hero-tech-stack">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">AI Tools</span>
           </div>
         </div>
       </div>
       <div class="hero-scroll-hint">
-        <div class="scroll-dot"></div>
-        <span>Scroll</span>
+        <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+        <span>Scroll to explore</span>
       </div>
     </section>
 
-    <!-- ── ABOUT ── -->
+    <!-- ═══════════════ CURRENTLY WORKING ON ══════════════ -->
+    <section id="current" class="section current-section reveal">
+      <div class="section-label">⚡ Live Updates</div>
+      <h2 class="section-title">Currently Working On</h2>
+      <p class="section-sub">Real-time snapshot of what I'm building, learning & exploring right now.</p>
+
+      <div class="current-grid">
+        <div class="current-card glass active-card">
+          <div class="current-card-header">
+            <div class="current-status-dot"></div>
+            <span class="current-status-text">Active</span>
+          </div>
+          <div class="current-icon">🤖</div>
+          <h3>Building AI Tools</h3>
+          <p>Developing AI-powered web apps with smart integrations, auto-responses, and dynamic UI experiences using LLM APIs.</p>
+          <div class="current-progress">
+            <div class="current-progress-bar" style="--prog:72%"></div>
+            <span>72% complete</span>
+          </div>
+          <div class="current-tags">
+            <span>JavaScript</span><span>AI APIs</span><span>UX</span>
+          </div>
+        </div>
+
+        <div class="current-card glass">
+          <div class="current-card-header">
+            <div class="current-status-dot learning"></div>
+            <span class="current-status-text">Learning</span>
+          </div>
+          <div class="current-icon">🌐</div>
+          <h3>Exploring Three.js & WebGL</h3>
+          <p>Diving deep into 3D web graphics, shader programming, and immersive interactive visual experiences for next-gen portfolios.</p>
+          <div class="current-progress">
+            <div class="current-progress-bar" style="--prog:38%"></div>
+            <span>38% complete</span>
+          </div>
+          <div class="current-tags">
+            <span>Three.js</span><span>WebGL</span><span>GLSL</span>
+          </div>
+        </div>
+
+        <div class="current-card glass">
+          <div class="current-card-header">
+            <div class="current-status-dot building"></div>
+            <span class="current-status-text">Building</span>
+          </div>
+          <div class="current-icon">⚙️</div>
+          <h3>Improving Backend Systems</h3>
+          <p>Learning Node.js, REST APIs, and database integration to transition from pure frontend to full-stack development.</p>
+          <div class="current-progress">
+            <div class="current-progress-bar" style="--prog:45%"></div>
+            <span>45% complete</span>
+          </div>
+          <div class="current-tags">
+            <span>Node.js</span><span>REST API</span><span>MongoDB</span>
+          </div>
+        </div>
+
+        <div class="current-card glass">
+          <div class="current-card-header">
+            <div class="current-status-dot experimenting"></div>
+            <span class="current-status-text">Experimenting</span>
+          </div>
+          <div class="current-icon">🎨</div>
+          <h3>UI/UX Experiments</h3>
+          <p>Pushing the boundaries of web design with advanced CSS animations, glassmorphism, neomorphism, and custom cursor interactions.</p>
+          <div class="current-progress">
+            <div class="current-progress-bar" style="--prog:85%"></div>
+            <span>85% complete</span>
+          </div>
+          <div class="current-tags">
+            <span>CSS</span><span>Animations</span><span>Figma</span>
+          </div>
+        </div>
+
+        <div class="current-card glass">
+          <div class="current-card-header">
+            <div class="current-status-dot learning"></div>
+            <span class="current-status-text">Learning</span>
+          </div>
+          <div class="current-icon">⚛️</div>
+          <h3>Leveling Up React</h3>
+          <p>Mastering React hooks, context API, state management with Zustand, and building production-grade component libraries.</p>
+          <div class="current-progress">
+            <div class="current-progress-bar" style="--prog:60%"></div>
+            <span>60% complete</span>
+          </div>
+          <div class="current-tags">
+            <span>React</span><span>Hooks</span><span>Zustand</span>
+          </div>
+        </div>
+
+        <div class="current-card glass">
+          <div class="current-card-header">
+            <div class="current-status-dot building"></div>
+            <span class="current-status-text">Shipping</span>
+          </div>
+          <div class="current-icon">🚀</div>
+          <h3>Freelance Projects</h3>
+          <p>Actively taking client projects — landing pages, e-commerce stores, and custom web apps. Open for collaborations!</p>
+          <div class="current-progress">
+            <div class="current-progress-bar" style="--prog:90%"></div>
+            <span>Always On</span>
+          </div>
+          <div class="current-tags">
+            <span>Client Work</span><span>Open</span><span>Freelance</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ ABOUT ══════════════════════ -->
     <section id="about" class="section about-section reveal">
       <div class="section-label">01 / About</div>
       <h2 class="section-title">Who I Am?</h2>
@@ -133,8 +306,9 @@
                   <rect width="200" height="220" rx="16" fill="rgba(0,255,255,0.04)" stroke="rgba(0,255,255,0.2)" stroke-width="1"/>
                   <circle cx="100" cy="85" r="42" fill="rgba(0,255,255,0.08)" stroke="rgba(0,255,255,0.3)" stroke-width="1.5"/>
                   <ellipse cx="100" cy="170" rx="58" ry="36" fill="rgba(0,255,255,0.05)" stroke="rgba(0,255,255,0.2)" stroke-width="1.5"/>
-                  <text x="100" y="92" text-anchor="middle" fill="rgba(0,255,255,0.7)" font-size="28" font-family="Syne" font-weight="800"></text>
-                  <text x="100" y="195" text-anchor="middle" fill="rgba(0,255,255,0.4)" font-size="10" font-family="DM Sans">Shivam</text>
+                  <text x="100" y="97" text-anchor="middle" fill="rgba(0,255,255,0.7)" font-size="36">👨‍💻</text>
+                  <text x="100" y="200" text-anchor="middle" fill="rgba(0,255,255,0.4)" font-size="10" font-family="JetBrains Mono">SHIVAM.DEV</text>
+                  <line x1="20" y1="130" x2="180" y2="130" stroke="rgba(0,255,255,0.1)" stroke-width="1" stroke-dasharray="4 4"/>
                 </svg>
               </div>
             </div>
@@ -142,260 +316,473 @@
               <span class="badge-num">2+</span>
               <span class="badge-txt">Years<br/>Experience</span>
             </div>
+            <div class="about-code-snippet glass">
+              <span class="code-line"><span class="code-cyan">const</span> shivam <span class="code-white">= {</span></span>
+              <span class="code-line">  role: <span class="code-green">"Frontend Dev"</span>,</span>
+              <span class="code-line">  passion: <span class="code-green">"∞"</span></span>
+              <span class="code-line"><span class="code-white">};</span></span>
+            </div>
           </div>
         </div>
         <div class="about-text-col">
           <p class="about-para">I am a passionate student and <strong>Frontend Developer</strong> with strong expertise in HTML, CSS, JavaScript, and modern UI/UX design. I specialize in creating beautiful, responsive, and user-centric websites that leave a lasting impression.</p>
           <p class="about-para">Proficient in video editing with <strong>VN Editor, Alight Motion, After Effects, CapCut,</strong> and <strong>Canva</strong>. I actively use AI tools to enhance frontend development and content creation workflows.</p>
           <p class="about-para">A dedicated <strong>content creator</strong> who loves turning ideas into visually stunning digital experiences — from a pixel-perfect landing page to a cinematic video edit.</p>
+
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">🎯</span>
+              <div>
+                <strong>Goal-Oriented</strong>
+                <p>Every project I start, I finish with excellence</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">⚡</span>
+              <div>
+                <strong>Fast Learner</strong>
+                <p>Adapts to new technologies rapidly</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">🤝</span>
+              <div>
+                <strong>Collaborative</strong>
+                <p>Works great in teams and solo</p>
+              </div>
+            </div>
+          </div>
+
           <div class="about-stats">
-            <div class="stat-item"><span class="stat-num">12+</span><span class="stat-lbl">Skills</span></div>
-            <div class="stat-item"><span class="stat-num">4+</span><span class="stat-lbl">Projects</span></div>
-            <div class="stat-item"><span class="stat-num">100%</span><span class="stat-lbl">Passion</span></div>
+            <div class="stat-item">
+              <span class="stat-num" data-count="12">0</span>
+              <span class="stat-lbl">Skills</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num" data-count="4">0</span>
+              <span class="stat-lbl">Projects</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">∞</span>
+              <span class="stat-lbl">Passion</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── MY STORY ── -->
+    <!-- ═══════════════════════ SKILLS ══════════════════════ -->
+    <section id="skills" class="section skills-section reveal">
+      <div class="section-label">02 / Skills</div>
+      <h2 class="section-title">My Skillset</h2>
+      <p class="section-sub">Technologies and tools I use to bring ideas to life.</p>
+
+      <div class="skills-tabs">
+        <button class="skill-tab active" data-category="all">All</button>
+        <button class="skill-tab" data-category="frontend">Frontend</button>
+        <button class="skill-tab" data-category="tools">AI & Tools</button>
+        <button class="skill-tab" data-category="design">Design</button>
+        <button class="skill-tab" data-category="other">Other</button>
+      </div>
+
+      <div class="skills-grid" id="skillsGrid">
+        <div class="skill-card" data-category="frontend" data-level="95">
+          <div class="skill-icon-wrap">
+            <div class="skill-icon">⚡</div>
+          </div>
+          <div class="skill-info">
+            <div class="skill-header">
+              <span class="skill-name">HTML5</span>
+              <span class="skill-pct">95%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="95"></div>
+            </div>
+            <span class="skill-category-badge">Frontend</span>
+          </div>
+        </div>
+        <div class="skill-card" data-category="frontend" data-level="90">
+          <div class="skill-icon-wrap"><div class="skill-icon">🎨</div></div>
+          <div class="skill-info">
+            <div class="skill-header"><span class="skill-name">CSS3 & Animations</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-w="90"></div></div>
+            <span class="skill-category-badge">Frontend</span>
+          </div>
+        </div>
+        <div class="skill-card" data-category="frontend" data-level="85">
+          <div class="skill-icon-wrap"><div class="skill-icon">🔧</div></div>
+          <div class="skill-info">
+            <div class="skill-header"><span class="skill-name">JavaScript ES6+</span><span class="skill-pct">85%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-w="85"></div></div>
+            <span class="skill-category-badge">Frontend</span>
+          </div>
+        </div>
+        <div class="skill-card" data-category="frontend" data-level="88">
+          <div class="skill-icon-wrap"><div class="skill-icon">📱</div></div>
+          <div class="skill-info">
+            <div class="skill-header"><span class="skill-name">Responsive Design</span><span class="skill-pct">88%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-w="88"></div></div>
+            <span class="skill-category-badge">Frontend</span>
+          </div>
+        </div>
+        <div class="skill-card" data-category="frontend" data-level="70">
+          <div class="skill-icon-wrap"><div class="skill-icon">⚛️</div></div>
+          <div class="skill-info">
+            <div class="skill-header"><span class="skill-name">React.js</span><span class="skill-pct">70%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-w="70"></div></div>
+            <span class="skill-category-badge">Frontend</span>
+          </div>
+        </div>
+        <div class="skill-card" data-category="tools" data-level="78">
+          <div class="skill-icon-wrap"><div class="skill-icon">🤖</div></div>
+          <div class="skill-info">
+            <div class="skill-header"><span class="skill-name">AI Tools Integration</span><span class="skill-pct">78%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-w="78"></div></div>
+            <span class="skill-category-badge">AI Tools</span>
+          </div>
+        </div>
+        <div class="skill-card" data-category="design" data-level="80">
+          <div class="skill-icon-wrap"><div class="skill-icon">🖌️</div></div>
+          <div class="skill-info">
+            <div class="skill-header"><span class="skill-name">UI/UX Design</span><span class="skill-pct">80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-w="80"></div></div>
+            <span class="skill-category-badge">Design</span>
+          </div>
+        </div>
+        <div class="skill-card" data-category="design" data-level="75">
+          <div class="skill-icon-wrap"><div class="skill-icon">🖼️</div></div>
+          <div class="skill-info">
+            <div class="skill-header"><span class="skill-name">Figma & Canva</span><span class="skill-pct">75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-w="75"></div></div>
+            <span class="skill-category-badge">Design</span>
+          </div>
+        </div>
+        <div class="skill-card" data-category="other" data-level="92">
+          <div class="skill-icon-wrap"><div class="skill-icon">🎬</div></div>
+          <div class="skill-info">
+            <div class="skill-header"><span class="skill-name">Video Editing</span><span class="skill-pct">92%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-w="92"></div></div>
+            <span class="skill-category-badge">Creative</span>
+          </div>
+        </div>
+        <div class="skill-card" data-category="other" data-level="85">
+          <div class="skill-icon-wrap"><div class="skill-icon">✍️</div></div>
+          <div class="skill-info">
+            <div class="skill-header"><span class="skill-name">Content Creation</span><span class="skill-pct">85%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-w="85"></div></div>
+            <span class="skill-category-badge">Creative</span>
+          </div>
+        </div>
+        <div class="skill-card" data-category="tools" data-level="80">
+          <div class="skill-icon-wrap"><div class="skill-icon">🐙</div></div>
+          <div class="skill-info">
+            <div class="skill-header"><span class="skill-name">Git & GitHub</span><span class="skill-pct">80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-w="80"></div></div>
+            <span class="skill-category-badge">Tools</span>
+          </div>
+        </div>
+        <div class="skill-card" data-category="frontend" data-level="72">
+          <div class="skill-icon-wrap"><div class="skill-icon">🚀</div></div>
+          <div class="skill-info">
+            <div class="skill-header"><span class="skill-name">Performance Optimization</span><span class="skill-pct">72%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-w="72"></div></div>
+            <span class="skill-category-badge">Frontend</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════ PROJECTS ════════════════════ -->
+    <section id="projects" class="section projects-section reveal">
+      <div class="section-label">03 / Projects</div>
+      <h2 class="section-title">Case Studies</h2>
+      <p class="section-sub">In-depth breakdowns of projects — problem, solution, learnings.</p>
+
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card glass" data-project="0">
+          <div class="project-img proj1">
+            <span class="project-emoji">🌐</span>
+            <div class="project-img-overlay">
+              <button class="btn-case-study" onclick="openProject(0)">View Case Study →</button>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Portfolio</span>
+              <span class="project-year">2024</span>
+            </div>
+            <h3 class="project-title">Modern Portfolio</h3>
+            <p class="project-desc">A premium personal portfolio website with advanced animations, dark mode, and smooth UX — crafted pixel by pixel.</p>
+            <div class="project-stack">
+              <span>HTML5</span><span>CSS3</span><span>JS</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="proj-btn-outline">GitHub ↗</a>
+              <a href="#" class="proj-btn-outline">Live Demo ↗</a>
+              <button class="proj-btn-primary" onclick="openProject(0)">Case Study</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card glass" data-project="1">
+          <div class="project-img proj2">
+            <span class="project-emoji">🤖</span>
+            <div class="project-img-overlay">
+              <button class="btn-case-study" onclick="openProject(1)">View Case Study →</button>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">AI / Chat</span>
+              <span class="project-year">2024</span>
+            </div>
+            <h3 class="project-title">AI Chat Bot</h3>
+            <p class="project-desc">Intelligent AI-powered chatbot with natural conversation flow, smart responses, and a slick modern interface.</p>
+            <div class="project-stack">
+              <span>JavaScript</span><span>AI API</span><span>CSS3</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="proj-btn-outline">GitHub ↗</a>
+              <a href="#" class="proj-btn-outline">Live Demo ↗</a>
+              <button class="proj-btn-primary" onclick="openProject(1)">Case Study</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card glass" data-project="2">
+          <div class="project-img proj3">
+            <span class="project-emoji">🛒</span>
+            <div class="project-img-overlay">
+              <button class="btn-case-study" onclick="openProject(2)">View Case Study →</button>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">E-Commerce</span>
+              <span class="project-year">2024</span>
+            </div>
+            <h3 class="project-title">Local Super Store</h3>
+            <p class="project-desc">Full-featured e-commerce website for a local supermarket with cart, product filtering, and responsive design.</p>
+            <div class="project-stack">
+              <span>HTML5</span><span>CSS3</span><span>JS</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="proj-btn-outline">GitHub ↗</a>
+              <a href="#" class="proj-btn-outline">Live Demo ↗</a>
+              <button class="proj-btn-primary" onclick="openProject(2)">Case Study</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card glass" data-project="3">
+          <div class="project-img proj4">
+            <span class="project-emoji">🎮</span>
+            <div class="project-img-overlay">
+              <button class="btn-case-study" onclick="openProject(3)">View Case Study →</button>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-tag">Game / Canvas</span>
+              <span class="project-year">2024</span>
+            </div>
+            <h3 class="project-title">Endless Runner Game</h3>
+            <p class="project-desc">An exciting subway-surfer style endless runner built with HTML5 Canvas and JS — smooth controls, scoring system included.</p>
+            <div class="project-stack">
+              <span>HTML5 Canvas</span><span>JavaScript</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="proj-btn-outline">GitHub ↗</a>
+              <a href="#" class="proj-btn-outline">Live Demo ↗</a>
+              <button class="proj-btn-primary" onclick="openProject(3)">Case Study</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════ PROJECT CASE STUDY MODAL ═══════ -->
+    <div class="case-study-overlay" id="caseStudyOverlay">
+      <div class="case-study-modal glass" id="caseStudyModal">
+        <button class="case-study-close" id="caseStudyClose">✕</button>
+        <div class="case-study-content" id="caseStudyContent"></div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════ EXPERIENCE TIMELINE ═══════════ -->
     <section id="story" class="section story-section reveal">
-      <div class="section-label">02 / Journey</div>
+      <div class="section-label">04 / Journey</div>
       <h2 class="section-title">My Story Begins</h2>
-      <p class="story-intro">From a curious student to a frontend developer — this is how it all unfolded.</p>
+      <p class="section-sub">From a curious student to a frontend engineer — the unplanned journey.</p>
 
       <div class="timeline">
-
         <div class="tl-item tl-left reveal-tl">
-          <div class="tl-dot">
-            <span>📚</span>
-          </div>
+          <div class="tl-dot"><span>📚</span></div>
           <div class="tl-card glass">
             <span class="tl-year">Early Days</span>
             <h3 class="tl-title">Just a Student with Big Dreams</h3>
-            <p class="tl-desc">Like any other student, I was focused on my studies — books, classes, exams. But deep inside, there was always a curiosity about how things worked on screens. Phones, websites, apps — everything felt like magic to me.</p>
+            <p class="tl-desc">Like any other student, I was focused on my studies. But deep inside, there was always a curiosity about how things worked on screens. Phones, websites, apps — everything felt like magic to me.</p>
+            <div class="tl-achievement">🏅 Foundation Built</div>
           </div>
         </div>
 
         <div class="tl-item tl-right reveal-tl">
-          <div class="tl-dot">
-            <span>💡</span>
-          </div>
+          <div class="tl-dot"><span>💡</span></div>
           <div class="tl-card glass">
             <span class="tl-year">The Spark</span>
             <h3 class="tl-title">The Interest Slowly Awakened</h3>
-            <p class="tl-desc">Gradually, I started exploring the internet more deeply. I stumbled upon YouTube videos about web design and coding. Watching someone build a website from scratch felt electric — I thought, "I want to do this." The spark had been lit.</p>
+            <p class="tl-desc">I stumbled upon YouTube videos about web design and coding. Watching someone build a website from scratch felt electric — I thought, "I want to do this." The spark had been lit.</p>
+            <div class="tl-achievement">💡 First Inspiration</div>
           </div>
         </div>
 
         <div class="tl-item tl-left reveal-tl">
-          <div class="tl-dot">
-            <span>🎬</span>
-          </div>
+          <div class="tl-dot"><span>🎬</span></div>
           <div class="tl-card glass">
             <span class="tl-year">Side Hustle</span>
             <h3 class="tl-title">Video Editing Entered the Chat</h3>
-            <p class="tl-desc">Before diving into code, I discovered video editing. CapCut, Alight Motion, VN Editor — I taught myself everything. Creating reels and short-form content became my creative outlet, and it trained my eye for design and aesthetics.</p>
+            <p class="tl-desc">Before diving into code, I discovered video editing. CapCut, Alight Motion, VN Editor — I taught myself everything. Creating reels and short-form content became my creative outlet and trained my eye for design.</p>
+            <div class="tl-achievement">🎬 First Edit Published</div>
           </div>
         </div>
 
         <div class="tl-item tl-right reveal-tl">
-          <div class="tl-dot">
-            <span>💻</span>
-          </div>
+          <div class="tl-dot"><span>💻</span></div>
           <div class="tl-card glass">
             <span class="tl-year">2024</span>
             <h3 class="tl-title">I Built My First Project</h3>
-            <p class="tl-desc">In 2024, I finally took the leap. I built my very first web project — it wasn't perfect, but it was <em>mine</em>. Every bug I fixed, every layout I tweaked, felt like a victory. That first project changed everything. I realized this was my path.</p>
+            <p class="tl-desc">In 2024, I finally took the leap. I built my very first web project — it wasn't perfect, but it was <em>mine</em>. Every bug I fixed, every layout I tweaked, felt like a victory. That first project changed everything.</p>
+            <div class="tl-achievement">🚀 First Live Project</div>
           </div>
         </div>
 
         <div class="tl-item tl-left reveal-tl">
-          <div class="tl-dot">
-            <span>🚀</span>
-          </div>
+          <div class="tl-dot"><span>🚀</span></div>
           <div class="tl-card glass">
             <span class="tl-year">Now</span>
             <h3 class="tl-title">Growing Every Single Day</h3>
-            <p class="tl-desc">Today, I'm building advanced projects, exploring AI integrations, and constantly leveling up. The journey from a regular student to a frontend developer wasn't planned — it was felt. And I'm just getting started. The best chapters are still being written.</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── SKILLS ── -->
-    <section id="skills" class="section skills-section reveal">
-      <div class="section-label">03 / Skills</div>
-      <h2 class="section-title">My Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-card" data-level="95"><div class="skill-icon">⚡</div><div class="skill-info"><span class="skill-name">HTML5</span><div class="skill-bar"><div class="skill-fill" data-w="95"></div></div></div><span class="skill-pct">95%</span></div>
-        <div class="skill-card" data-level="90"><div class="skill-icon">🎨</div><div class="skill-info"><span class="skill-name">CSS3 & Animations</span><div class="skill-bar"><div class="skill-fill" data-w="90"></div></div></div><span class="skill-pct">90%</span></div>
-        <div class="skill-card" data-level="85"><div class="skill-icon">🔧</div><div class="skill-info"><span class="skill-name">JavaScript (ES6+)</span><div class="skill-bar"><div class="skill-fill" data-w="85"></div></div></div><span class="skill-pct">85%</span></div>
-        <div class="skill-card" data-level="88"><div class="skill-icon">📱</div><div class="skill-info"><span class="skill-name">Responsive Design</span><div class="skill-bar"><div class="skill-fill" data-w="88"></div></div></div><span class="skill-pct">88%</span></div>
-        <div class="skill-card" data-level="80"><div class="skill-icon">🖌️</div><div class="skill-info"><span class="skill-name">UI/UX Design</span><div class="skill-bar"><div class="skill-fill" data-w="80"></div></div></div><span class="skill-pct">80%</span></div>
-        <div class="skill-card" data-level="70"><div class="skill-icon">⚛️</div><div class="skill-info"><span class="skill-name">React Basics</span><div class="skill-bar"><div class="skill-fill" data-w="70"></div></div></div><span class="skill-pct">70%</span></div>
-        <div class="skill-card" data-level="92"><div class="skill-icon">🎬</div><div class="skill-info"><span class="skill-name">Video Editing</span><div class="skill-bar"><div class="skill-fill" data-w="92"></div></div></div><span class="skill-pct">92%</span></div>
-        <div class="skill-card" data-level="85"><div class="skill-icon">✍️</div><div class="skill-info"><span class="skill-name">Content Creation</span><div class="skill-bar"><div class="skill-fill" data-w="85"></div></div></div><span class="skill-pct">85%</span></div>
-        <div class="skill-card" data-level="78"><div class="skill-icon">🤖</div><div class="skill-info"><span class="skill-name">AI Tools Integration</span><div class="skill-bar"><div class="skill-fill" data-w="78"></div></div></div><span class="skill-pct">78%</span></div>
-        <div class="skill-card" data-level="75"><div class="skill-icon">🖼️</div><div class="skill-info"><span class="skill-name">Figma & Canva</span><div class="skill-bar"><div class="skill-fill" data-w="75"></div></div></div><span class="skill-pct">75%</span></div>
-        <div class="skill-card" data-level="80"><div class="skill-icon">🐙</div><div class="skill-info"><span class="skill-name">Git & GitHub</span><div class="skill-bar"><div class="skill-fill" data-w="80"></div></div></div><span class="skill-pct">80%</span></div>
-        <div class="skill-card" data-level="72"><div class="skill-icon">⚡</div><div class="skill-info"><span class="skill-name">Performance Optimization</span><div class="skill-bar"><div class="skill-fill" data-w="72"></div></div></div><span class="skill-pct">72%</span></div>
-      </div>
-    </section>
-
-    <!-- ── PROJECTS ── -->
-    <section id="projects" class="section projects-section reveal">
-      <div class="section-label">04 / Projects</div>
-      <h2 class="section-title">My Projects</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-img">
-            <div class="project-img-inner proj1"><span>🌐</span></div>
-            <div class="project-overlay"><a href="#" class="btn-view">View Project →</a></div>
-          </div>
-          <div class="project-info">
-            <span class="project-tag">Portfolio</span>
-            <h3 class="project-title">Modern Portfolio</h3>
-            <p class="project-desc">A premium personal portfolio website with advanced animations, dark mode, and smooth UX — crafted pixel by pixel.</p>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-img">
-            <div class="project-img-inner proj2"><span>🤖</span></div>
-            <div class="project-overlay"><a href="#" class="btn-view">View Project →</a></div>
-          </div>
-          <div class="project-info">
-            <span class="project-tag">AI / Chat</span>
-            <h3 class="project-title">AI Chat Bot</h3>
-            <p class="project-desc">Intelligent AI-powered chatbot with natural conversation flow, smart responses, and a slick modern interface.</p>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-img">
-            <div class="project-img-inner proj3"><span>🛒</span></div>
-            <div class="project-overlay"><a href="#" class="btn-view">View Project →</a></div>
-          </div>
-          <div class="project-info">
-            <span class="project-tag">E-Commerce</span>
-            <h3 class="project-title">Local Super Store</h3>
-            <p class="project-desc">Full-featured e-commerce website for a local supermarket with cart, product filtering, and responsive design.</p>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-img">
-            <div class="project-img-inner proj4"><span>🎮</span></div>
-            <div class="project-overlay"><a href="#" class="btn-view">View Project →</a></div>
-          </div>
-          <div class="project-info">
-            <span class="project-tag">Game / Canvas</span>
-            <h3 class="project-title">Endless Runner Game</h3>
-            <p class="project-desc">An exciting subway-surfer style endless runner built with HTML5 Canvas and JS — smooth controls, scoring system included.</p>
+            <p class="tl-desc">Today, I'm building advanced projects, exploring AI integrations, and constantly leveling up. The journey from a regular student to a frontend developer wasn't planned — it was felt. The best chapters are still being written.</p>
+            <div class="tl-achievement">⚡ Currently Active</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── REVIEWS ── -->
+    <!-- ══════════════════ LIVE STATS ═══════════════════════ -->
+    <section id="stats" class="section stats-section reveal">
+      <div class="section-label">05 / Impact</div>
+      <h2 class="section-title">Portfolio Stats</h2>
+      <p class="section-sub">Real-time metrics tracking reach and engagement.</p>
+
+      <div class="stats-grid">
+        <div class="stat-card glass">
+          <div class="stat-card-icon">👁️</div>
+          <div class="stat-card-num" data-target="2847" data-live="true">0</div>
+          <div class="stat-card-lbl">Total Views</div>
+          <div class="stat-live-badge"><span class="live-dot"></span> Live</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-card-icon">🌍</div>
+          <div class="stat-card-num" data-target="23" data-live="false">0</div>
+          <div class="stat-card-lbl">Countries Reached</div>
+          <div class="stat-sub-text">Across 5 continents</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-card-icon">🧑‍💻</div>
+          <div class="stat-card-num" data-target="142" data-live="true">0</div>
+          <div class="stat-card-lbl">Live Visitors Today</div>
+          <div class="stat-live-badge"><span class="live-dot"></span> Active Now</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-card-icon">💬</div>
+          <div class="stat-card-num" data-target="389" data-live="false">0</div>
+          <div class="stat-card-lbl">Portfolio Interactions</div>
+          <div class="stat-sub-text">Clicks, hovers, shares</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-card-icon">⭐</div>
+          <div class="stat-card-num" data-target="6" data-live="false">0</div>
+          <div class="stat-card-lbl">5-Star Reviews</div>
+          <div class="stat-sub-text">100% satisfaction</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-card-icon">📁</div>
+          <div class="stat-card-num" data-target="4" data-live="false">0</div>
+          <div class="stat-card-lbl">Projects Shipped</div>
+          <div class="stat-sub-text">More in progress</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════ REVIEWS ══════════════════════ -->
     <section id="reviews" class="section reviews-section reveal">
-      <div class="section-label">05 / Testimonials</div>
+      <div class="section-label">06 / Testimonials</div>
       <h2 class="section-title">What Clients Say</h2>
-      <p class="reviews-sub">Real feedback from people I've worked with. Their words mean everything to me.</p>
+      <p class="section-sub">Real feedback from people I've worked with. Their words mean everything.</p>
 
       <div class="reviews-track-wrap">
         <div class="reviews-track" id="reviewsTrack">
-
           <div class="review-card glass">
             <div class="review-header">
-              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#00f5ff,#7c3aed)">
-                <span>AR</span>
-              </div>
-              <div class="reviewer-info">
-                <span class="reviewer-name">Aryan Rawat</span>
-                <span class="reviewer-role">Startup Founder, Delhi</span>
-              </div>
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#00f5ff,#7c3aed)"><span>AR</span></div>
+              <div class="reviewer-info"><span class="reviewer-name">Aryan Rawat</span><span class="reviewer-role">Startup Founder, Delhi</span></div>
               <div class="review-stars">★★★★★</div>
             </div>
             <p class="review-text">"Shivam built our entire company landing page from scratch in under 3 days. The animations were smooth, the design was clean, and the responsiveness was perfect across all devices. Genuinely impressed — will definitely hire again!"</p>
             <div class="review-project-tag">🌐 Portfolio / Landing Page</div>
           </div>
-
           <div class="review-card glass">
             <div class="review-header">
-              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#a855f7,#00c8d7)">
-                <span>PG</span>
-              </div>
-              <div class="reviewer-info">
-                <span class="reviewer-name">Priya Gupta</span>
-                <span class="reviewer-role">Content Creator, Mumbai</span>
-              </div>
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#a855f7,#00c8d7)"><span>PG</span></div>
+              <div class="reviewer-info"><span class="reviewer-name">Priya Gupta</span><span class="reviewer-role">Content Creator, Mumbai</span></div>
               <div class="review-stars">★★★★★</div>
             </div>
             <p class="review-text">"I needed a website for my content brand and Shivam delivered something beyond my expectations. The UI is stunning, the colors are on point, and he even added micro-animations I never asked for but absolutely loved. 10/10 experience."</p>
             <div class="review-project-tag">🎨 Content Creator Website</div>
           </div>
-
           <div class="review-card glass">
             <div class="review-header">
-              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#10b981,#00f5ff)">
-                <span>KM</span>
-              </div>
-              <div class="reviewer-info">
-                <span class="reviewer-name">Karan Mehta</span>
-                <span class="reviewer-role">E-Commerce Owner, Patna</span>
-              </div>
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#10b981,#00f5ff)"><span>KM</span></div>
+              <div class="reviewer-info"><span class="reviewer-name">Karan Mehta</span><span class="reviewer-role">E-Commerce Owner, Patna</span></div>
               <div class="review-stars">★★★★★</div>
             </div>
             <p class="review-text">"We hired Shivam to build our local store's online presence. He created a full product catalog with filtering, a cart system, and mobile optimization. Customers love it. Our online sales went up after launch. Highly recommended!"</p>
             <div class="review-project-tag">🛒 Local Super Store</div>
           </div>
-
           <div class="review-card glass">
             <div class="review-header">
-              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">
-                <span>RS</span>
-              </div>
-              <div class="reviewer-info">
-                <span class="reviewer-name">Rohit Sharma</span>
-                <span class="reviewer-role">Game Dev Enthusiast, Noida</span>
-              </div>
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)"><span>RS</span></div>
+              <div class="reviewer-info"><span class="reviewer-name">Rohit Sharma</span><span class="reviewer-role">Game Dev Enthusiast, Noida</span></div>
               <div class="review-stars">★★★★★</div>
             </div>
-            <p class="review-text">"The endless runner game Shivam built is genuinely fun and polished. Smooth physics, a working score system, and a beautiful UI. I shared it with my friends and they couldn't stop playing. Pure HTML5 Canvas magic — absolutely loved it!"</p>
+            <p class="review-text">"The endless runner game Shivam built is genuinely fun and polished. Smooth physics, a working score system, and a beautiful UI. I shared it with my friends and they couldn't stop playing. Pure HTML5 Canvas magic!"</p>
             <div class="review-project-tag">🎮 Endless Runner Game</div>
           </div>
-
           <div class="review-card glass">
             <div class="review-header">
-              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#6366f1,#a855f7)">
-                <span>NS</span>
-              </div>
-              <div class="reviewer-info">
-                <span class="reviewer-name">Neha Singh</span>
-                <span class="reviewer-role">Freelance Designer, Bangalore</span>
-              </div>
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#6366f1,#a855f7)"><span>NS</span></div>
+              <div class="reviewer-info"><span class="reviewer-name">Neha Singh</span><span class="reviewer-role">Freelance Designer, Bangalore</span></div>
               <div class="review-stars">★★★★★</div>
             </div>
-            <p class="review-text">"Collaborated with Shivam on a client project and was blown away by his eye for detail. He turned my Figma designs into pixel-perfect HTML/CSS that looked identical to the mockup. Fast delivery, great communication — a pleasure to work with."</p>
+            <p class="review-text">"Collaborated with Shivam on a client project and was blown away by his eye for detail. He turned my Figma designs into pixel-perfect HTML/CSS. Fast delivery, great communication — a pleasure to work with."</p>
             <div class="review-project-tag">🖌️ Design to Code</div>
           </div>
-
           <div class="review-card glass">
             <div class="review-header">
-              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#ec4899,#f59e0b)">
-                <span>VT</span>
-              </div>
-              <div class="reviewer-info">
-                <span class="reviewer-name">Vivek Tiwari</span>
-                <span class="reviewer-role">YouTube Creator, Lucknow</span>
-              </div>
+              <div class="reviewer-avatar" style="background:linear-gradient(135deg,#ec4899,#f59e0b)"><span>VT</span></div>
+              <div class="reviewer-info"><span class="reviewer-name">Vivek Tiwari</span><span class="reviewer-role">YouTube Creator, Lucknow</span></div>
               <div class="review-stars">★★★★★</div>
             </div>
-            <p class="review-text">"Shivam edited my YouTube video intro and it was fire. The transitions, the color grading, the energy — everything was on point. He understood my vibe immediately and delivered something that felt cinematic. Straight up talented editor!"</p>
+            <p class="review-text">"Shivam edited my YouTube video intro and it was fire. The transitions, the color grading, the energy — everything was on point. He understood my vibe immediately and delivered something that felt cinematic. Straight up talented!"</p>
             <div class="review-project-tag">🎬 Video Editing</div>
           </div>
-
         </div>
-
         <div class="reviews-nav">
           <button class="rev-btn" id="revPrev">←</button>
           <div class="rev-dots" id="revDots"></div>
@@ -404,23 +791,19 @@
       </div>
     </section>
 
-    <!-- ── APPOINTMENT ── -->
+    <!-- ════════════════════ APPOINTMENT ══════════════════ -->
     <section id="appointment" class="section appointment-section reveal">
-      <div class="section-label">06 / Booking</div>
+      <div class="section-label">07 / Booking</div>
       <h2 class="section-title">Fix an Appointment</h2>
-      <p class="appt-sub">Ready to work together? Book a consultation slot by completing the payment below. Quick, easy, confirmed.</p>
+      <p class="section-sub">Ready to work together? Book a consultation slot. Quick, easy, confirmed.</p>
 
       <div class="appt-wrapper">
-        <!-- Plans -->
         <div class="appt-plans">
           <div class="plan-card glass plan-active" data-plan="basic">
             <div class="plan-badge">Popular</div>
             <div class="plan-icon">💬</div>
             <h3 class="plan-name">Quick Chat</h3>
-            <div class="plan-price">
-  <span class="old-price">₹150</span>
-  ₹50
-</div>
+            <div class="plan-price"><span class="old-price">₹150</span> ₹50</div>
             <ul class="plan-features">
               <li>✓ 30-min consultation</li>
               <li>✓ Project discussion</li>
@@ -449,10 +832,9 @@
           </div>
         </div>
 
-        <!-- Payment QR -->
         <div class="appt-card glass">
           <div class="qr-wrap">
-            <div class="qr-box" id="qrCode">
+            <div class="qr-box">
               <img src="qr.jpeg" alt="QR Code" style="width:180px;height:180px;border-radius:8px;" onerror="this.style.display='none';document.getElementById('qrFallback').style.display='flex'">
               <div id="qrFallback" class="qr-fallback" style="display:none">
                 <svg viewBox="0 0 100 100" width="160" height="160">
@@ -463,46 +845,33 @@
                   <rect x="65" y="15" width="20" height="20" fill="#00f5ff"/>
                   <rect x="10" y="60" width="30" height="30" fill="none" stroke="#00f5ff" stroke-width="3"/>
                   <rect x="15" y="65" width="20" height="20" fill="#00f5ff"/>
-                  <text x="50" y="56" text-anchor="middle" fill="#0a0a12" font-size="7" font-family="monospace">UPI PAYMENT</text>
+                  <text x="50" y="56" text-anchor="middle" fill="#0a0a12" font-size="7">UPI PAYMENT</text>
                 </svg>
               </div>
             </div>
             <p class="qr-label">Scan &amp; Pay to Book Slot</p>
-            <div class="qr-upi-tag">UPI · Google Pay · PhonePe · Paytm</div>
+            <div class="qr-upi-tag">UPI · GPay · PhonePe · Paytm</div>
           </div>
-
           <div class="appt-right">
             <div class="appt-steps">
-              <div class="step"><span class="step-num">1</span><span>Select a plan above &amp; scan the QR code</span></div>
-              <div class="step"><span class="step-num">2</span><span>Complete UPI payment (selected amount)</span></div>
-              <div class="step"><span class="step-num">3</span><span>Click "I Have Paid" &amp; enter 12-digit UTR</span></div>
-              <div class="step"><span class="step-num">4</span><span>Verify via WhatsApp — slot confirmed! 🎉</span></div>
+              <div class="step"><span class="step-num">1</span><span>Select a plan above &amp; scan QR</span></div>
+              <div class="step"><span class="step-num">2</span><span>Complete UPI payment</span></div>
+              <div class="step"><span class="step-num">3</span><span>Click "I Have Paid" &amp; enter UTR</span></div>
+              <div class="step"><span class="step-num">4</span><span>Verify on WhatsApp — confirmed! 🎉</span></div>
             </div>
-
-            <div class="appt-selected-plan">
-              Selected: <span id="selectedPlanLabel">Quick Chat — ₹50</span>
-            </div>
-
-            <button class="btn btn-primary appt-btn" id="paidBtn">
-              <span>✓ I Have Paid</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18"><path d="M20 6L9 17l-5-5"/></svg>
-            </button>
-
-            <div class="appt-trust">
-              <span>🔒 Secured</span>
-              <span>⚡ Instant Verify</span>
-              <span>💯 100+ Booked</span>
-            </div>
+            <div class="appt-selected-plan">Selected: <span id="selectedPlanLabel">Quick Chat — ₹50</span></div>
+            <button class="btn btn-primary appt-btn" id="paidBtn"><span>✓ I Have Paid</span></button>
+            <div class="appt-trust"><span>🔒 Secured</span><span>⚡ Instant</span><span>💯 100+ Booked</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── CONTACT ── -->
+    <!-- ═══════════════════════ CONTACT ════════════════════ -->
     <section id="contact" class="section contact-section reveal">
-      <div class="section-label">07 / Contact</div>
+      <div class="section-label">08 / Contact</div>
       <h2 class="section-title">Get In Touch</h2>
-      <p class="contact-sub">Have a project in mind? Let's build something amazing together. I'm always open to new opportunities.</p>
+      <p class="section-sub">Have a project in mind? Let's build something amazing together.</p>
 
       <div class="contact-grid">
         <div class="contact-card glass">
@@ -518,29 +887,36 @@
         <div class="contact-card glass">
           <div class="contact-icon">📍</div>
           <span class="contact-lbl">Location</span>
-          <span class="contact-val">Bihar, India</span>
+          <span class="contact-val">Bihar, India 🇮🇳</span>
         </div>
       </div>
 
-      <!-- Quick message form -->
       <div class="contact-form-wrap glass">
         <h3 class="form-title">Send a Quick Message</h3>
         <div class="form-row">
           <div class="form-group">
             <label>Your Name</label>
-            <input type="text" id="formName" placeholder="e.g. Abhishak Kumar" />
+            <input type="text" id="formName" placeholder="e.g. Abhishek Kumar" />
+            <span class="form-focus-line"></span>
           </div>
           <div class="form-group">
             <label>Your Email</label>
             <input type="email" id="formEmail" placeholder="your@email.com" />
+            <span class="form-focus-line"></span>
           </div>
         </div>
         <div class="form-group">
+          <label>Subject</label>
+          <input type="text" id="formSubject" placeholder="Project inquiry, collaboration..." />
+          <span class="form-focus-line"></span>
+        </div>
+        <div class="form-group">
           <label>Message</label>
-          <textarea id="formMsg" rows="4" placeholder="Tell me about your project..."></textarea>
+          <textarea id="formMsg" rows="5" placeholder="Tell me about your project, budget, timeline..."></textarea>
+          <span class="form-focus-line"></span>
         </div>
         <button class="btn btn-primary" id="sendMsgBtn">
-          <span>Send Message via WhatsApp</span>
+          <span>Send via WhatsApp</span>
           <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
         </button>
       </div>
@@ -555,36 +931,38 @@
 
   </main>
 
-  <!-- ════════════════════════ FOOTER ════════════════════════ -->
+  <!-- ══════════════════════ FOOTER ══════════════════════ -->
   <footer>
     <div class="footer-inner">
       <span class="footer-logo">Shivam<span>.</span></span>
       <p>Made with <span class="heart">♥</span> &amp; passion by Shivam Choudhary</p>
       <p class="footer-copy">© 2025 All rights reserved. Bihar, India.</p>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
   </footer>
 
-  <!-- ═══════════════════ UTR MODAL ══════════════════════ -->
+  <!-- ════════════════════ UTR MODAL ═════════════════════ -->
   <div class="modal-overlay" id="utrModal">
     <div class="modal glass">
       <button class="modal-close" id="modalClose">✕</button>
       <div class="modal-icon-wrap">💳</div>
       <h3 class="modal-title">Enter UTR Number</h3>
-      <p class="modal-sub">Enter your 12-digit UTR / Transaction Reference to verify payment</p>
+      <p class="modal-sub">Enter your 12-digit UTR / Transaction Reference</p>
       <div class="utr-input-wrap">
         <input type="text" class="utr-input" id="utrInput" placeholder="e.g. 123456789012" maxlength="12" inputmode="numeric" />
         <span class="utr-char-count" id="utrCount">0/12</span>
       </div>
       <p class="utr-error" id="utrError"></p>
-      <button class="btn btn-primary" id="verifyBtn" style="width:100%;justify-content:center;">
-        <span>Verify Payment</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18"><path d="M20 6L9 17l-5-5"/></svg>
-      </button>
-      <p class="modal-note">🔒 Your UTR is only used to verify your payment. We don't store it anywhere.</p>
+      <button class="btn btn-primary" id="verifyBtn" style="width:100%;justify-content:center;"><span>Verify Payment</span></button>
+      <p class="modal-note">🔒 UTR is only used to verify payment. Not stored.</p>
     </div>
   </div>
 
-  <!-- ═══════════════════ SUCCESS MODAL ══════════════════ -->
+  <!-- ═══════════════════ SUCCESS MODAL ═════════════════ -->
   <div class="modal-overlay" id="successModal">
     <div class="modal success-modal glass">
       <div class="success-anim">
@@ -594,16 +972,55 @@
         </svg>
       </div>
       <h3 class="success-title">Payment Verified! 🎉</h3>
-      <p class="success-sub">Awesome! Your appointment slot has been booked. Click below to send your UTR to Shivam on WhatsApp and get your confirmed slot time.</p>
+      <p class="success-sub">Your slot has been booked. Send UTR on WhatsApp to confirm.</p>
       <button class="btn btn-primary" id="whatsappBtn" style="width:100%;justify-content:center;margin-bottom:12px">
         <span>Verify via WhatsApp</span>
-        <svg viewBox="0 0 24 24" fill="currentColor" width="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
       </button>
       <button class="btn btn-outline" id="successClose" style="width:100%;justify-content:center;">Close</button>
     </div>
   </div>
 
-  <!-- Confetti canvas -->
+  <!-- ════════════════════ AI CHATBOT ════════════════════ -->
+  <div class="chatbot-wrap" id="chatbotWrap">
+    <div class="chat-window glass" id="chatWindow">
+      <div class="chat-header">
+        <div class="chat-header-left">
+          <div class="chat-avatar">
+            <span>🤖</span>
+            <span class="chat-online-dot"></span>
+          </div>
+          <div>
+            <div class="chat-bot-name">Shivam AI</div>
+            <div class="chat-bot-status">Online · Responds instantly</div>
+          </div>
+        </div>
+        <button class="chat-close-btn" id="chatClose">✕</button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg bot-msg">
+          <div class="chat-bubble">
+            👋 Hi! I'm Shivam's AI assistant. Ask me anything about his work!<br><br>
+            Try: <span class="chat-suggestion" onclick="sendSuggestion('Tell me about Shivam')">About Shivam</span> · <span class="chat-suggestion" onclick="sendSuggestion('Show projects')">Projects</span> · <span class="chat-suggestion" onclick="sendSuggestion('Skills?')">Skills</span>
+          </div>
+        </div>
+      </div>
+      <div class="chat-input-wrap">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Ask about Shivam's projects..." />
+        <button class="chat-send-btn" id="chatSend">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </button>
+        <button class="chat-voice-btn" id="chatVoice" title="Voice Reply">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 1 3 3v7a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3M8 22h8"/></svg>
+        </button>
+      </div>
+    </div>
+    <button class="chatbot-fab" id="chatbotFab">
+      <span class="fab-icon">🤖</span>
+      <span class="fab-ping"></span>
+    </button>
+  </div>
+
+  <!-- Confetti -->
   <canvas id="confettiCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none;"></canvas>
 
   <script src="script.js"></script>
