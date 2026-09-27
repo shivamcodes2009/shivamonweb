@@ -1,0 +1,154 @@
+/* =========================================================
+   SHIVAM CHOUDHARY — PORTFOLIO
+   payment.css — UPI payment + manual UTR confirmation
+   ========================================================= */
+@import url("style.css");
+
+.pay-grid {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+/* ---------- Summary ---------- */
+.pay-summary {
+  padding: clamp(1.8rem, 3.5vw, 2.6rem);
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius);
+  position: sticky;
+  top: calc(var(--nav-h) + 30px);
+}
+.pay-kicker {
+  font-size: 0.66rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(247, 244, 239, 0.55); margin-bottom: 1.2rem;
+}
+.pay-service {
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  color: #fff; margin-bottom: 2rem; line-height: 1.1;
+}
+.pay-amount {
+  padding-top: 1.6rem; border-top: 1px solid rgba(247, 244, 239, 0.18);
+  display: flex; flex-direction: column; gap: 0.4rem;
+}
+.pay-amount-label { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(247, 244, 239, 0.55); }
+.pay-amount strong { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 500; color: var(--accent-soft); line-height: 1; }
+.pay-points { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.pay-points li {
+  position: relative; padding-left: 1.3rem;
+  font-size: 0.88rem; color: rgba(247, 244, 239, 0.75);
+}
+.pay-points li::before {
+  content: ""; position: absolute; left: 0; top: 0.65em;
+  width: 8px; height: 1px; background: var(--accent);
+}
+
+/* ---------- Cards ---------- */
+.pay-main { position: relative; display: flex; flex-direction: column; gap: clamp(1rem, 2.5vw, 1.5rem); }
+.pay-card {
+  position: relative;
+  padding: clamp(1.8rem, 4vw, 3rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  animation: cardIn 0.5s var(--ease) both;
+}
+@keyframes cardIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+.step-label {
+  font-size: 0.66rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.6rem;
+}
+
+/* ---------- QR ---------- */
+.qr-frame {
+  position: relative;
+  width: fit-content; margin: 0 auto 1.8rem;
+  padding: 16px; background: #fff;
+  border: 1px solid var(--line);
+}
+.qr-frame img { width: min(260px, 58vw); height: auto; }
+.qr-corner { position: absolute; width: 16px; height: 16px; border: 1.5px solid var(--accent); }
+.qr-corner.tl { top: -6px; left: -6px; border-right: 0; border-bottom: 0; }
+.qr-corner.tr { top: -6px; right: -6px; border-left: 0; border-bottom: 0; }
+.qr-corner.bl { bottom: -6px; left: -6px; border-right: 0; border-top: 0; }
+.qr-corner.br { bottom: -6px; right: -6px; border-left: 0; border-top: 0; }
+
+.pay-text { color: var(--ink-2); font-size: 0.98rem; max-width: 52ch; margin-bottom: 1.8rem; }
+#payScan .pay-text { text-align: center; margin-inline: auto; }
+
+.pay-confirm-title { font-size: clamp(1.7rem, 3.4vw, 2.4rem); margin-bottom: 1rem; }
+
+/* ---------- UTR form ---------- */
+.utr-form { display: flex; flex-direction: column; gap: 0.55rem; max-width: 460px; }
+.utr-form label {
+  font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted);
+}
+.utr-form input {
+  width: 100%; padding: 1rem 1.1rem;
+  font-family: inherit; font-size: 1rem; letter-spacing: 0.04em;
+  color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line-strong); border-radius: var(--radius);
+  transition: border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.utr-form input::placeholder { color: var(--muted); }
+.utr-form input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(180, 113, 63, 0.14); }
+.utr-form input.is-invalid { border-color: #b6483b; box-shadow: 0 0 0 3px rgba(182, 72, 59, 0.12); }
+.utr-help { font-size: 0.78rem; color: var(--muted); margin-bottom: 1rem; }
+.utr-help.is-error { color: #b6483b; }
+
+.pay-final {
+  margin-top: 1.8rem; padding-top: 1.8rem; border-top: 1px solid var(--line);
+  animation: cardIn 0.5s var(--ease) both;
+}
+.pay-final .pay-text { margin-bottom: 1.4rem; }
+
+/* ---------- Celebration ---------- */
+.celebrate {
+  position: absolute; inset: 0; z-index: 6;
+  display: grid; place-items: center;
+  background: rgba(247, 244, 239, 0.94);
+  backdrop-filter: blur(4px);
+  border-radius: var(--radius);
+  animation: fadeIn 0.3s var(--ease) both;
+}
+.celebrate[hidden] { display: none; }
+.celebrate-inner { position: relative; display: grid; place-items: center; gap: 1.1rem; }
+.celebrate-ring {
+  position: absolute; top: 50%; left: 50%; width: 90px; height: 90px; margin: -45px 0 0 -45px;
+  border-radius: 50%; border: 1px solid var(--accent);
+  animation: ringOut 1.1s var(--ease) forwards;
+}
+@keyframes ringOut {
+  0% { transform: scale(0.5); opacity: 0.9; }
+  100% { transform: scale(2.1); opacity: 0; }
+}
+.celebrate-check { width: 84px; height: 84px; }
+.celebrate-check circle {
+  fill: none; stroke: var(--accent); stroke-width: 2;
+  stroke-dasharray: 151; stroke-dashoffset: 151;
+  animation: draw 0.7s var(--ease) forwards;
+}
+.celebrate-check path {
+  fill: none; stroke: var(--ink); stroke-width: 3;
+  stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 40; stroke-dashoffset: 40;
+  animation: draw 0.5s var(--ease) 0.45s forwards;
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.celebrate-text {
+  font-family: var(--font-display); font-size: 1.4rem; color: var(--ink);
+  opacity: 0; animation: fadeIn 0.5s var(--ease) 0.65s forwards;
+}
+
+/* ---------- Empty state ---------- */
+.pay-empty { text-align: center; padding: clamp(2rem, 6vw, 4rem) 0; }
+.pay-empty .pay-text { margin-inline: auto; text-align: center; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .pay-grid { grid-template-columns: 1fr; }
+  .pay-summary { position: static; }
+}

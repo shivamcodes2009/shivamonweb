@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Complete your payment for Shivam Choudhary's services via UPI, then confirm your UTR on WhatsApp." />
+  <meta name="theme-color" content="#F7F4EF" />
+  <meta name="robots" content="noindex" />
+  <title>Payment — Shivam Choudhary</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="payment.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='Georgia,serif' fill='%23B4713F'%3ES%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <a class="skip-link" href="#payment">Skip to content</a>
+
+  <!-- ================= NAVIGATION ================= -->
+  <header class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Shivam Choudhary — home">SHIVAM CHOUDHARY</a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <div class="nav-links-head">
+          <span>Menu</span>
+          <button class="nav-close" id="navClose" type="button" aria-label="Close menu">&times;</button>
+        </div>
+        <a href="index.html#home">Home</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#story">Story</a>
+        <a href="work.html">Work With Me</a>
+        <a href="index.html#appointment">Appointment</a>
+        <div class="nav-links-foot">
+          <a class="drawer-link" data-social="instagram" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.3" cy="6.7" r="1.05" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+          <a class="drawer-link" data-social="telegram" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+            Telegram
+          </a>
+          <a class="btn btn-line" data-cv href="cv.jpg" download="Shivam-Choudhary-CV.jpg">Download CV</a>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="icon-link" data-social="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.3" cy="6.7" r="1.05" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="icon-link" data-social="telegram" href="#" target="_blank" rel="noopener" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+        </a>
+        <a class="btn btn-line nav-cv" data-cv href="cv.jpg" download="Shivam-Choudhary-CV.jpg">Download CV</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="payment">
+    <!-- ================= PAGE HERO ================= -->
+    <section class="page-hero">
+      <div class="container page-hero-inner">
+        <p class="breadcrumb reveal"><a href="work.html">Work With Me</a><span>/</span>Payment</p>
+        <h1 class="page-title reveal">Complete your payment</h1>
+        <p class="page-sub reveal">
+          A simple two-step flow &mdash; pay via UPI, then share your transaction reference so I can
+          verify it manually.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= PAYMENT ================= -->
+    <section class="section">
+      <div class="container pay-grid" id="payGrid">
+        <!-- Summary -->
+        <aside class="pay-summary reveal">
+          <p class="pay-kicker">Order Summary</p>
+          <h2 class="pay-service" id="payService">Frontend Development</h2>
+          <div class="pay-amount">
+            <span class="pay-amount-label">Amount payable</span>
+            <strong id="payAmount">&#8377;10,000</strong>
+          </div>
+          <ul class="pay-points">
+            <li>One-time project payment</li>
+            <li>Verified manually by Shivam</li>
+            <li>No card details collected</li>
+          </ul>
+        </aside>
+
+        <div class="pay-main">
+          <!-- Step 1 -->
+          <div class="pay-card" id="payScan">
+            <p class="step-label">Step 01 &mdash; Pay via UPI</p>
+            <div class="qr-frame">
+              <img data-config-img="qr" src="qr.png" alt="UPI QR code for payment" width="260" height="260" />
+              <span class="qr-corner tl"></span><span class="qr-corner tr"></span>
+              <span class="qr-corner bl"></span><span class="qr-corner br"></span>
+            </div>
+            <p class="pay-text">Scan the QR code using your preferred UPI app and complete the payment.</p>
+            <button class="btn btn-primary btn-block" id="completedBtn" type="button">I&rsquo;ve Completed Payment</button>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="pay-card" id="payConfirm" hidden>
+            <p class="step-label">Step 02 &mdash; Confirm</p>
+            <h2 class="pay-confirm-title">Confirm your payment</h2>
+            <p class="pay-text">
+              Please enter your UTR / transaction reference number so I can manually verify your payment.
+            </p>
+
+            <form class="utr-form" id="utrForm" novalidate>
+              <label for="utr">UTR number</label>
+              <input id="utr" name="utr" type="text" inputmode="text" autocomplete="off"
+                     placeholder="Enter UTR Number" aria-describedby="utrHelp" required />
+              <p class="utr-help" id="utrHelp">Find this in your UPI app under the transaction details.</p>
+              <button class="btn btn-primary btn-block" type="submit">Submit UTR</button>
+            </form>
+
+            <div class="pay-final" id="payFinal" hidden>
+              <p class="pay-text">
+                Your payment will be manually confirmed. Continue to WhatsApp for verification.
+              </p>
+              <a class="btn btn-primary btn-block" id="waConfirm" href="#" target="_blank" rel="noopener">
+                Confirm Payment via WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Celebration overlay -->
+          <div class="celebrate" id="celebrate" hidden aria-hidden="true">
+            <div class="celebrate-inner">
+              <span class="celebrate-ring"></span>
+              <svg class="celebrate-check" viewBox="0 0 52 52" aria-hidden="true">
+                <circle cx="26" cy="26" r="24" />
+                <path d="M15 27l7.5 7.5L37 19" />
+              </svg>
+              <p class="celebrate-text">Payment noted</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fallback when no valid service -->
+      <div class="container pay-empty" id="payEmpty" hidden>
+        <h2 class="pay-confirm-title">No service selected</h2>
+        <p class="pay-text">Please choose a service to continue to payment.</p>
+        <a class="btn btn-primary" href="work.html">Browse Services</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">SHIVAM CHOUDHARY</a>
+        <p>Made with curiosity by Shivam Choudhary.</p>
+      </div>
+      <nav class="footer-social" aria-label="Social links">
+        <a data-social="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.3" cy="6.7" r="1.05" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a data-social="telegram" href="#" target="_blank" rel="noopener" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+        </a>
+        <a data-social="github" href="#" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05.8-.23 1.65-.34 2.5-.34.85 0 1.7.11 2.5.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+        </a>
+      </nav>
+      <p class="footer-copy">&copy; <span data-year>2026</span> Shivam Choudhary</p>
+    </div>
+  </footer>
+
+  <!-- ================= AI ASSISTANT ================= -->
+  <div class="assistant" id="assistant">
+    <button class="assistant-launch" id="assistantLaunch" type="button" aria-expanded="false" aria-controls="assistantPanel" aria-label="Open Shivam AI assistant">
+      <span class="assistant-launch-ring" aria-hidden="true"></span>
+      <svg class="assistant-launch-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/><circle cx="18.5" cy="17.5" r="2.1"/></svg>
+      <span class="assistant-launch-label">Shivam AI</span>
+    </button>
+
+    <section class="assistant-panel" id="assistantPanel" role="dialog" aria-modal="false" aria-label="Shivam AI assistant" hidden>
+      <header class="assistant-head">
+        <div class="assistant-id">
+          <span class="assistant-avatar" aria-hidden="true">S</span>
+          <div>
+            <strong>Shivam AI</strong>
+            <span class="assistant-status"><i></i>Online &middot; demo</span>
+          </div>
+        </div>
+        <button class="assistant-close" id="assistantClose" type="button" aria-label="Close assistant">&times;</button>
+      </header>
+      <div class="assistant-body" id="assistantBody" aria-live="polite"></div>
+      <div class="assistant-quick" id="assistantQuick">
+        <button type="button" data-quick="skills">View Skills</button>
+        <button type="button" data-quick="projects">View Projects</button>
+        <button type="button" data-quick="work">Work With Shivam</button>
+        <button type="button" data-quick="appointment">Appointment</button>
+        <button type="button" data-quick="contact">Contact</button>
+      </div>
+      <form class="assistant-input" id="assistantForm">
+        <label class="sr-only" for="assistantField">Message Shivam AI</label>
+        <input id="assistantField" type="text" name="message" placeholder="Ask about skills, projects, pricing&hellip;" autocomplete="off" />
+        <button type="submit" aria-label="Send message">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 8 6 8-16-8z"/></svg>
+        </button>
+      </form>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+  <script src="payment.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+ /* =========================================================
+   SHIVAM CHOUDHARY — PORTFOLIO
+   appointment.css — selected plan + WhatsApp confirmation
+   ========================================================= */
+@import url("style.css");
+
+.appt-wrap { display: flex; justify-content: center; }
+
+.appt-card {
+  position: relative; overflow: hidden;
+  width: min(560px, 100%);
+  padding: clamp(2.2rem, 5vw, 3.4rem);
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.appt-card::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent-soft), var(--accent), var(--accent-soft));
+}
+.appt-card::after {
+  content: ""; position: absolute; top: 3px; left: 50%; transform: translateX(-50%);
+  width: 120px; height: 120px; pointer-events: none;
+  background: radial-gradient(circle, rgba(180, 113, 63, 0.14), transparent 70%);
+}
+
+.appt-kicker {
+  font-size: 0.66rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 1rem;
+}
+.appt-plan {
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  text-transform: uppercase; letter-spacing: 0.03em;
+  margin-bottom: 1.2rem;
+}
+.appt-price {
+  display: flex; align-items: baseline; justify-content: center; gap: 0.9rem;
+  padding-bottom: 1.8rem; margin-bottom: 1.8rem;
+  border-bottom: 1px solid var(--line);
+}
+.appt-price s { color: var(--muted); font-size: 1.15rem; }
+.appt-price span { font-family: var(--font-display); font-size: clamp(2.4rem, 6vw, 3.4rem); color: var(--accent-deep); line-height: 1; }
+
+.appt-points {
+  display: inline-flex; flex-direction: column; gap: 0.85rem;
+  text-align: left; margin: 0 auto 2rem;
+}
+.appt-points li {
+  position: relative; padding-left: 1.6rem;
+  color: var(--ink-2); font-size: 0.94rem;
+}
+.appt-points li::before {
+  content: ""; position: absolute; left: 0; top: 0.55em;
+  width: 9px; height: 9px; border: 1px solid var(--accent); border-radius: 50%;
+}
+.appt-points li::after {
+  content: ""; position: absolute; left: 3px; top: calc(0.55em + 3px);
+  width: 3px; height: 3px; background: var(--accent); border-radius: 50%;
+}
+
+.appt-card .btn { display: flex; max-width: 420px; margin-inline: auto; }
+.appt-note { margin-top: 1.4rem; font-size: 0.82rem; color: var(--muted); max-width: 44ch; margin-inline: auto; }
+
+.appt-empty { text-align: center; }
+.appt-empty .appt-note { margin-bottom: 1.6rem; }

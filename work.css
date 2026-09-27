@@ -1,0 +1,85 @@
+/* =========================================================
+   SHIVAM CHOUDHARY — PORTFOLIO
+   work.css — services & pricing page
+   ========================================================= */
+@import url("style.css");
+
+/* ---------- Services list ---------- */
+.work-list { border-top: 1px solid var(--line); }
+
+.work-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 180px 200px;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: center;
+  padding: clamp(1.6rem, 3.6vw, 2.4rem) 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding 0.55s var(--ease), background 0.55s var(--ease);
+}
+.work-item:hover { background: rgba(255, 255, 255, 0.6); padding-inline: clamp(0.8rem, 2vw, 1.6rem); }
+
+.work-index {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  color: var(--muted); line-height: 1;
+  transition: color 0.5s var(--ease);
+}
+.work-item:hover .work-index { color: var(--accent); }
+
+.work-cat {
+  font-size: 0.64rem; letter-spacing: 0.26em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.6rem;
+}
+.work-name { font-size: clamp(1.5rem, 3vw, 2.15rem); margin-bottom: 0.4rem; transition: transform 0.5s var(--ease); }
+.work-item:hover .work-name { transform: translateX(6px); }
+.work-desc { color: var(--muted); font-size: 0.92rem; max-width: 46ch; }
+
+.work-price { display: flex; flex-direction: column; align-items: flex-end; gap: 0.15rem; text-align: right; }
+.work-price s { color: var(--muted); font-size: 0.95rem; }
+.work-price .now { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.1; }
+.work-price .quote {
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+}
+
+.work-action { display: flex; justify-content: flex-end; }
+
+.work-note {
+  margin-top: clamp(2rem, 5vw, 3rem); max-width: 62ch;
+  padding-left: 1.2rem; border-left: 2px solid var(--accent);
+  color: var(--muted); font-size: 0.9rem; line-height: 1.75;
+}
+
+/* ---------- Process ---------- */
+.process {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2vw, 1.6rem);
+  counter-reset: step;
+}
+.process-step {
+  padding: clamp(1.6rem, 3vw, 2.2rem);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  transition: transform 0.5s var(--ease), border-color 0.5s var(--ease), background 0.5s var(--ease);
+}
+.process-step:hover { transform: translateY(-5px); border-color: var(--accent); background: var(--surface); }
+.process-num {
+  display: block; font-size: 0.68rem; letter-spacing: 0.3em;
+  color: var(--accent); margin-bottom: 1.2rem;
+}
+.process-step h3 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); margin-bottom: 0.6rem; }
+.process-step p { color: var(--ink-2); font-size: 0.94rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .work-item { grid-template-columns: 44px minmax(0, 1fr) auto; }
+  .work-price {
+    grid-column: 2 / -1; margin-top: 0.4rem;
+    flex-direction: row; align-items: baseline; gap: 0.8rem; text-align: left;
+  }
+  .work-action { grid-column: 2 / -1; justify-content: flex-start; }
+}
+
+@media (max-width: 760px) {
+  .process { grid-template-columns: 1fr; }
+}
